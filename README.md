@@ -17,6 +17,7 @@
 自分とは違う技術を持った人を探したい時、チームのメンバーを募集したい時、自分のスキルを発信しながら何かしらの活動を求めている時
 
 ## 設計書
+https://drive.google.com/file/d/15gh7PXpPc-O32WLt6wRdboGPrTbOl2c3/view?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1LyKYSdzT2so0t86SNF6qyLH6fQfm9pbjeYBsFBzdYJE/edit?usp=sharing
