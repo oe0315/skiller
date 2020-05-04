@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'users/followed/:user_id' => 'users#followed',as: 'followed'
   resources :users, only: [:index, :edit, :show, :update]
   resources :posts, only: [:index, :create, :edit, :update, :destroy]
-  resources :recruitments, only: [:index, :create, :edit, :update, :destroy]
+  resources :recruitment_posts, only: [:index, :create, :edit, :update, :destroy]
   resources :messages, only: [:create]
   resources :rooms, only: [:index, :create, :show]
 end

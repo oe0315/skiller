@@ -7,16 +7,16 @@
     <% if user_signed_in? %>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">マイページ</a>
+        <%=link_to "マイページ", user_path(current_user.id), class:"nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">タイムライン</a>
+        <%=link_to "タイムライン", posts_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">募集ページ</a>
+        <%=link_to "募集ページ", recruitment_posts_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">検索</a>
+        <%=link_to "検索", users_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
         <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
