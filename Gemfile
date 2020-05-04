@@ -81,6 +81,6 @@ gem 'pry-rails'
 gem 'rails-i18n'
 
 
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem "kaminari"
