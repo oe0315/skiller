@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 	def top
 	end
 
-	def home
+	def about
 	end
 end

@@ -1,22 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Skiller</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
+    <% if user_signed_in? %>
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">マイページ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">タイムライン</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">募集ページ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="#">検索</a>
+      </li>
+      <li class="nav-item">
+        <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
       </li>
     </ul>
+    <% else %>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%=link_to "初めての方へ", home_about_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%=link_to "新規登録(無料)", new_user_registration_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%=link_to "ログイン", new_user_session_path, class:"nav-link" %>
+      </li>
+    </ul>
+    <% end %>
   </div>
 </nav>
