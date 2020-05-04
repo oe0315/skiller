@@ -1,0 +1,2 @@
+class Entrie < ApplicationRecord
+end
