@@ -1,12 +1,60 @@
 <%= render 'layouts/user_header' %>
-<%= form_for(@user) do |f| %>
-   <% if @user.profile_image? %>
-      <%= image_tag @user.profile_image.url, :size => '100x100' %>
-   <% else %>
-      <%= image_tag "/assets/no-image-icon.jpg", :size => '100x100' %>
-   <% end %>
-      <button type="button" class="btn btn-outline-secondary rounded-pill">
-         <%= f.file_field :profile_image, accept: 'image/jpeg,image/gif,image/png' %>
-      </button>
-　　<%= f.submit '更新する', class: 'btn btn-primary' %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<%= form_for(@user) do |f| %>
+		<% if @user.profile_image? %>
+		<%= image_tag @user.profile_image.url, :size => '100x100' %>
+		<% else %>
+		<%= image_tag "/assets/no-image-icon.jpg", :size => '100x100' %>
+		<% end %>
+		<button type="button" class="btn btn-outline-secondary rounded-pill">
+			<%= f.file_field :profile_image, accept: 'image/jpeg,image/gif,image/png' %>
+		</button>
+			<br />
+			<form class="form-inline">
+				<div class="form-group row">
+					<%= f.label :（姓） %>
+					<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" ,class:"form-control" %>
+					<%= f.label :（名）%>
+					<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+				</div>
+
+				<div class="form-group row">
+					<%= f.label :ニックネーム　%>
+					<%= f.text_field :nickname, autocomplete: "nickname", class:"form-control" %>
+				</div>
+
+				<div class="form-group row">
+					<%= f.label :スキル %>
+					<%= f.text_field :skill, autocomplete: "skill", class:"form-control" %>
+				</div>
+
+				<div class="form-group row">
+					<%= f.label :自己紹介 %>
+					<%= f.text_area :introduction, autocomplete: "skill", class:"form-control" %>
+				</div>
+
+				<div class="form-group row">
+					<%= f.label :メールアドレス %>
+					<%= f.email_field :email, autocomplete: "email", class:"form-control" %>
+				</div>
+
+				<div class="form-group row">
+					<%= f.label :電話番号（ハイフンなし）%>
+					<%= f.text_field :phone_number, autocomplete: "phone_number", class:"form-control" %>
+				</div>
+
+				<%= f.submit "保存", class:"btn btn-primary" %>
+				<%= link_to '退会', cancel_user_registration_path ,class:"btn btn-danger" %>
+				<% end %>
+			</form>
+	</div>
+</div>
+
+
+
+
+
+
+
+
