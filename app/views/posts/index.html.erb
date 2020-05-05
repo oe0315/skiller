@@ -19,11 +19,27 @@
 		</div>
 		<div class="col-9">
 			<h3>タイムライン</h3>
-			 <!--posts一覧-->
-			  <% @posts.reverse_each do |post| %>
-			  <%= post.body %>
-			  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			  <% end %>
+			<!--posts一覧-->
+			<% @posts.reverse_each do |post| %>
+			<div class="media">
+				<div class="media-left media-top">
+					<%= link_to user_path(post.user) do %>
+					<% if post.user.profile_image? %>
+					<%= image_tag post.user.profile_image.url, :size => '50x50' %>
+					<% else %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '50x50' %>
+					<% end %>
+					<div class="nickname">
+					<%= post.user.nickname %>
+				    </div>
+				    <% end %>
+				</div>
+				<div class="media-body">
+					<p class="media-heading"><%= post.body %></p>
+					<iframe width="500" height="180" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<% end %>
 		</div>
 	</div>
 </div>

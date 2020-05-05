@@ -1,1 +1,12 @@
 <%= render 'layouts/user_header' %>
+<%= form_for(@user) do |f| %>
+   <% if @user.profile_image? %>
+      <%= image_tag @user.profile_image.url, :size => '100x100' %>
+   <% else %>
+      <%= image_tag "/assets/no-image-icon.jpg", :size => '100x100' %>
+   <% end %>
+      <button type="button" class="btn btn-outline-secondary rounded-pill">
+         <%= f.file_field :profile_image, accept: 'image/jpeg,image/gif,image/png' %>
+      </button>
+　　<%= f.submit '更新する', class: 'btn btn-primary' %>
+<% end %>

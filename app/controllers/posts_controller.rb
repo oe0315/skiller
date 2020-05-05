@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 		url = params[:post][:youtube_url]
         url = url.last(11)
         @post.youtube_url = url
+        @post.user_id = current_user.id
 		@post.save
 		redirect_to posts_path
 	end
