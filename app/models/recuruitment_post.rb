@@ -1,2 +1,0 @@
-class RecuruitmentPost < ApplicationRecord
-end

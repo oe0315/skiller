@@ -1,1 +1,49 @@
 <%= render 'layouts/user_header' %>
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+			<!--posts一覧-->
+			<% @recruitment_posts.reverse_each do |recruitment_post| %>
+			<div class="media">
+				<div class="media-left media-top">
+					<%= link_to user_path(recruitment_post.user) do %>
+					<% if recruitment_post.user.profile_image? %>
+					<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64' %>
+					<% else %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<% end %>
+					<div class="nickname">
+					<%= recruitment_post.user.nickname %>
+				    </div>
+				    <% end %>
+				</div>
+				<div class="media-body">
+					<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
+					<%= recruitment_post.body %>
+					<iframe width="600" height="250" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="col-4">
+			<h3>募集</h3>
+			<%= form_for(@recruitment_post) do |f| %>
+			<div class="field row">
+				<%= f.label :タイトル %>
+				<%= f.text_field :title %><br/>
+			</div>
+			<div class="field row">
+				<%= f.label :投稿 %>
+				<%= f.text_area :body %><br/>
+			</div>
+			<div class="field row">
+				<%= f.label :YouTube %>
+				<%= f.text_field :youtube_url %>
+			</div>
+			<div class="actions row">
+				<%= f.submit "投稿", class: "btn btn-primary" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

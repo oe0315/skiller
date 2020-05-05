@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_152310) do
+ActiveRecord::Schema.define(version: 2020_05_05_160210) do
 
   create_table "direct_messages", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_152310) do
     t.string "skill"
     t.string "introduction"
     t.string "phone_number"
+    t.string "second_skill"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

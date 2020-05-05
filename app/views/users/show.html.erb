@@ -1,39 +1,76 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-3">
-			<div class="profile_image">
-				<% if @user.profile_image? %>
-				<%= image_tag @user.profile_image.url, :size => '100x100' %>
-				<% else %>
-				<%= image_tag "/assets/no-image-icon.jpg", :size => '100x100' %>
-				<% end %>
-		    </div>
-		    <div class="">
-		    	<%= @user.nickname %><br/>
-		    	<%= @user.introduction %><br/>
-		    	<%= @user.skill %><br/>
-		    	<%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true" %>
-		    </div>
-		</div>
-		<div class="col-9">
+		<div class="col-8">
 			<h3>タイムライン</h3>
 			<!--posts一覧-->
 			<% @posts.reverse_each do |post| %>
 			<div class="media">
 				<div class="media-left media-top">
 					<% if post.user.profile_image? %>
-					<%= image_tag post.user.profile_image.url, :size => '50x50' %>
+					<%= image_tag post.user.profile_image.url, :size => '64x64' %>
 					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '50x50' %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<% end %><br/>
+					<%= post.user.nickname %><br/>
+					<% if post.user == current_user %>
+					<%= link_to "編集", edit_post_path(post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %><br/>
+					<%= link_to "削除", post_path(post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
 					<% end %>
-					<div class="nickname">
-					<%= post.user.nickname %>
-				    </div>
 				</div>
 				<div class="media-body">
 					<p class="media-heading"><%= post.body %></p>
-					<iframe width="500" height="180" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="600" height="230" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="col-4">
+			<div class="card" style="width: 18rem;">
+				<div class="profile_image text-center">
+					<% if @user.profile_image? %>
+					<%= image_tag @user.profile_image.url, :size => '200x200' %>
+					<% else %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '200x200' %>
+					<% end %>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title"><%= @user.nickname %></h5>
+					<p class="card-text"><%= @user.introduction %></p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">スキル</li>
+					<li class="list-group-item"><%= @user.skill %></li>
+					<li class="list-group-item"><%= @user.second_skill %></li>
+				</ul>
+				<div class="card-body">
+					<%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-8">
+			<h3>募集一覧</h3>
+			<!--recuitment_posts一覧-->
+			<% @recruitment_posts.reverse_each do |recruitment_post| %>
+			<div class="media">
+				<div class="media-left media-top">
+					<% if recruitment_post.user.profile_image? %>
+					<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64' %>
+					<% else %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<% end %><br/>
+					<%= recruitment_post.user.nickname %><br/>
+					<% if recruitment_post.user == current_user %>
+					<%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %><br/>
+					<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
+					<% end %>
+				</div>
+				<div class="media-body">
+					<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
+					<%= recruitment_post.body %>
+					<iframe width="600" height="230" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<% end %>
