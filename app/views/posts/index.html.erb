@@ -1,2 +1,29 @@
 <%= render 'layouts/user_header' %>
-<h1>タイムライン</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-3">
+			<h3>投稿</h3>
+			<%= form_for(@post) do |f| %>
+			<div class="field row">
+				<%= f.label :投稿 %>
+				<%= f.text_area :body %><br/>
+			</div>
+			<div class="field row">
+				<%= f.label :YouTube %>
+				<%= f.text_field :youtube_url %>
+			</div>
+			<div class="actions row">
+				<%= f.submit class: "btn btn-primary" %>
+			</div>
+			<% end %>
+		</div>
+		<div class="col-9">
+			<h3>タイムライン</h3>
+			 <!--posts一覧-->
+			  <% @posts.reverse_each do |post| %>
+			  <%= post.body %>
+			  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			  <% end %>
+		</div>
+	</div>
+</div>
