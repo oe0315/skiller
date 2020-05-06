@@ -28,7 +28,7 @@
 		<div class="col-4">
 			<div class="form-inline my-2 my-lg-0">
 			<%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
-			  <%= text_field_tag :search, params[:search1], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
+			  <%= text_field_tag :search, params[:search1], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
 			  <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
 			<% end %>
 		    </div>

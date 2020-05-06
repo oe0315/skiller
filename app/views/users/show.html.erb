@@ -37,6 +37,8 @@
 				<div class="card-body">
 					<h5 class="card-title"><%= @user.nickname %></h5>
 					<p class="card-text"><%= @user.introduction %></p>
+					<p class="card-text">フォロー:<%= link_to following_path(@user.id) do %><%= @user.follower.count %><% end %></p>
+					<p class="card-text">フォロワー:<%= link_to follower_path(@user.id) do %><%= @user.followed.count %><% end %></p>
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">スキル</li>
@@ -44,7 +46,15 @@
 					<li class="list-group-item"><%= @user.second_skill %></li>
 				</ul>
 				<div class="card-body">
+					<% if @user == current_user %>
 					<%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
+					<% else %>
+					<% if current_user.following?(@user) %>
+					<%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+					<% else %>
+					<%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+					<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>

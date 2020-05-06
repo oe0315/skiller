@@ -1,0 +1,31 @@
+<%= render 'layouts/user_header' %>
+<div class="container">
+	<h3>フォロー中</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Introduction</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @user.following_user.each do |user| %>
+			<tr>
+				<td><%= user.nickname %></td>
+				<td><%= user.introduction %></td>
+				<td>
+					<% if current_user.following?(user) %>
+					<% if user == current_user %>
+					<%= link_to 'フォローする', follow_path(user.id), method: :POST,class:"btn btn-default" %>
+					<% else %>
+					<%= link_to 'フォロー解除', unfollow_path(user.id), method: :POST,class:"btn btn-info", remote: true %>
+					<% end %>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

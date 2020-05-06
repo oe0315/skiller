@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   put 'users/:id/withdraw' => 'users#withdraw'
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  get 'users/following/:user_id' => 'users#following',as: 'following'
   get 'users/follower/:user_id' => 'users#follower',as: 'follower'
-  get 'users/followed/:user_id' => 'users#followed',as: 'followed'
   resources :users, only: [:index, :edit, :show, :update]
   resources :posts, only: [:index, :create, :edit, :update, :destroy]
   resources :recruitment_posts, only: [:index, :create, :edit, :update, :destroy]
