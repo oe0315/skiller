@@ -2,7 +2,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-8">
-			<h3>タイムライン</h3>
 			<!--posts一覧-->
 			<% @posts.reverse_each do |post| %>
 			<div class="media">
@@ -87,3 +86,4 @@
 		</div>
 	</div>
 </div>
+<%= render 'layouts/user_footer' %>

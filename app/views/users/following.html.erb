@@ -18,9 +18,9 @@
 				<td>
 					<% if current_user.following?(user) %>
 					<% if user == current_user %>
-					<%= link_to 'フォローする', follow_path(user.id), method: :POST,class:"btn btn-default" %>
+					<%= link_to 'フォローする', follow_path(user.id), method: :POST,class:"btn btn-info" %>
 					<% else %>
-					<%= link_to 'フォロー解除', unfollow_path(user.id), method: :POST,class:"btn btn-info", remote: true %>
+					<%= link_to 'フォロー解除', unfollow_path(user.id), method: :POST,class:"btn btn-danger", remote: true %>
 					<% end %>
 					<% end %>
 				</td>
@@ -29,3 +29,4 @@
 		</tbody>
 	</table>
 </div>
+<%= render 'layouts/user_footer' %>
