@@ -16,9 +16,6 @@
         <%=link_to "募集ページ", recruitment_posts_path, class:"nav-link" %>
       </li>
       <li class="nav-item">
-        <%=link_to "検索", users_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item">
         <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
       </li>
     </ul>
@@ -35,5 +32,11 @@
       </li>
     </ul>
     <% end %>
-  </div>
+    </div>
+    <div class="form-inline my-2 my-lg-0">
+      <%= form_with url:users_path, method: :get, local: true do %>
+        <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"ニックネーム検索" %>
+        <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
+      <% end %>
+    </div>
 </nav>

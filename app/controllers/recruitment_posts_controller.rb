@@ -2,7 +2,7 @@ class RecruitmentPostsController < ApplicationController
 
 	def index
 		@recruitment_post = RecruitmentPost.new
-		@recruitment_posts = RecruitmentPost.all
+		@recruitment_posts = RecruitmentPost.search(params[:search1])
 	end
 
 	def create

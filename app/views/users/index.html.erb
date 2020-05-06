@@ -1,1 +1,25 @@
 <%= render 'layouts/user_header' %>
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+			<h3>ユーザー検索</h3>
+			<!--posts一覧-->
+			<% @users.reverse_each do |user| %>
+			<div class="media">
+				<div class="media-left media-top">
+					<%= link_to user_path(user) do %>
+					<% if user.profile_image? %>
+					<%= image_tag user.profile_image.url, :size => '64x64' %>
+					<% else %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<% end %>
+					<div class="nickname">
+						<%= user.nickname %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

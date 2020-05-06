@@ -1,0 +1,28 @@
+<%= render 'layouts/user_header' %>
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+			<h3>タイムライン</h3>
+			<!--posts一覧-->
+			<% @posts.reverse_each do |post| %>
+			<% if post.user == current_user %>
+			<% else %>
+			<div class="media">
+				<div class="media-left media-top">
+					<% if post.user.profile_image? %>
+					<%= image_tag post.user.profile_image.url, :size => '64x64' %>
+					<% else %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<% end %><br/>
+					<%= post.user.nickname %><br/>
+				</div>
+				<div class="media-body">
+					<p class="media-heading"><%= post.body %></p>
+					<iframe width="600" height="230" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

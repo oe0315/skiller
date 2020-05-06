@@ -1,7 +1,7 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-9">
+		<div class="col-8">
 			<h3>タイムライン</h3>
 			<!--posts一覧-->
 			<% @posts.reverse_each do |post| %>
@@ -25,7 +25,13 @@
 			</div>
 			<% end %>
 		</div>
-		<div class="col-3">
+		<div class="col-4">
+			<div class="form-inline my-2 my-lg-0">
+			<%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
+			  <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
+			  <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+			<% end %>
+		    </div>
 			<h3>投稿</h3>
 			<%= form_for(@post) do |f| %>
 			<div class="field row">

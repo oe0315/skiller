@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :recruitment_posts, only: [:index, :create, :edit, :update, :destroy]
   resources :messages, only: [:create]
   resources :rooms, only: [:index, :create, :show]
+  resources :searches,only:[:index]
 end

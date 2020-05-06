@@ -6,4 +6,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+    def self.search(search)
+      return User.all unless search
+      User.where(['nickname LIKE ?', "%#{search}%"])
+    end
 end
