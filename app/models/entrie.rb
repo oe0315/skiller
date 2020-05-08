@@ -1,2 +1,0 @@
-class Entrie < ApplicationRecord
-end

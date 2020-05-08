@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-	has_many :post
-	has_many :recruitment_post
+	has_many :post, dependent: :destroy
+	has_many :recruitment_post, dependent: :destroy
 	has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
     has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-    has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-    has_many :follower_user, through: :followed, source: :follower # 自分がフォローされている人
+    has_many :following_user, through: :follower, source: :followed, dependent: :destroy # 自分がフォローしている人
+    has_many :follower_user, through: :followed, source: :follower, dependent: :destroy # 自分がフォローされている人
+    has_many :direct_messages, dependent: :destroy
+    has_many :entries, dependent: :destroy
 	mount_uploader :profile_image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
