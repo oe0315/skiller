@@ -1,4 +1,4 @@
-# skiller<img width="100" alt="skiller" src="https://www.canva.com/design/DAD7fwiA5nw/Uc1R6-VlX_QgAQadBypMfw/view?utm_content=DAD7fwiA5nw&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu">
+# skiller<img width="100" alt="skiller" src="https://drive.google.com/file/d/14yDLlPxMvOy4chNUxibve3286yFqNCB3/view?usp=sharing">
 
 ## サイト概要
 クリエイティブ系のスキルを持っている方、勉強中の方同士で、同ジャンル、他ジャンル問わないスキルとスキルのマッチングサイトになります。
