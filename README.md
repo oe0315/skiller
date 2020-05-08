@@ -1,4 +1,4 @@
-# skiller<img width="100" alt="skiller" src="https://drive.google.com/file/d/14yDLlPxMvOy4chNUxibve3286yFqNCB3/view?usp=sharing">
+# **skiller**
 
 ## サイト概要
 クリエイティブ系のスキルを持っている方、勉強中の方同士で、同ジャンル、他ジャンル問わないスキルとスキルのマッチングサイトになります。
