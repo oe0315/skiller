@@ -8,7 +8,7 @@
 
 <hr>
 <% if @direct_messages.present? %>
-  <% @direct_messages.each do |f| %>
+  <% @direct_messages.last(10).each do |f| %>
     <strong><%= f.message %></strong>
     <small>by <strong><a href="/users/<%= f.user_id %>"><%= f.user.nickname %>さん</a></strong></small>
     <hr>

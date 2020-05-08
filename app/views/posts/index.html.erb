@@ -8,21 +8,30 @@
 			<% if post.user == current_user %>
 			<% else %>
 			<div class="media border" style="margin-top: 20px;">
-				<div class="media-left media-top">
+				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;"">
 					<%= link_to user_path(post.user) do %>
 					<% if post.user.profile_image? %>
 					<%= image_tag post.user.profile_image.url, :size => '64x64' %>
 					<% else %>
 					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
 					<% end %>
-					<div class="nickname">
-					<%= post.user.nickname %>
-				    </div>
+				    <div class="follow" style="margin-top: 10px;">
+				    <% if current_user.following?(post.user) && current_user.follower?(post.user) %>
+					   <%= link_to 'マッチング済み', unfollow_path(post.user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-sm rounded-pill" %>
+					   <% elsif current_user.following?(post.user) %>
+					   <%= link_to 'フォローを外す', unfollow_path(post.user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-sm rounded-pill" %>
+					   <% else %>
+					   <%= link_to 'フォローする', follow_path(post.user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-sm rounded-pill" %>
+					   <% end %>
+					</div>
 				    <% end %>
 				</div>
-				<div class="media-body" style="margin-left: 20px;">
+				<div class="media-body" style="margin-left: 30px;">
+					<div class="nickname" style="margin-bottom: 5px;">
+					<strong><%= post.user.nickname %></strong>
+				    </div>
 					<p class="media-heading"><%= post.body %></p>
-					<iframe width="500" height="180" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="550" height="180" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<% end %>
