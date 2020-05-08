@@ -1,4 +1,16 @@
 <%= render 'layouts/user_header' %>
-
-
-<%= render 'layouts/user_footer' %>
+<div class="dm_list">
+	<% @rooms.each do |room| %>
+	<div class="dm_list__content">
+		<%= link_to room_path(room), class: "dm_list__content__link" do %>
+		<div class="dm_list__content__link__box">
+			<h3 class="dm_list__content__link__box__name">
+				<%= opponent_user(room) %></h3>
+				<p class="dm_list__content__link__box__message">
+					<%= most_new_message_preview(room) %></p>
+				</div>
+				<% end %>
+			</div>
+			<% end %>
+		</div>
+		<%= render 'layouts/user_footer' %>

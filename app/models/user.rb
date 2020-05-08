@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :follower_user, through: :followed, source: :follower, dependent: :destroy # 自分がフォローされている人
     has_many :direct_messages, dependent: :destroy
     has_many :entries, dependent: :destroy
+    has_many :rooms, through: :entries
 	mount_uploader :profile_image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -29,4 +30,9 @@ class User < ApplicationRecord
 	def following?(user)
 	  following_user.include?(user)
 	end
+
+	def follower?(user)
+	  follower_user.include?(user)
+	end
+
 end

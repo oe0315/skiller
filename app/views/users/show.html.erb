@@ -46,13 +46,15 @@
 				</ul>
 				<div class="card-body">
 					<% if @user == current_user %>
-					<%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
+					   <%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
 					<% else %>
-					<% if current_user.following?(@user) %>
-					<%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
-					<% else %>
-					<%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
-					<% end %>
+					   <% if current_user.following?(@user) && current_user.follower?(@user) %>
+					   <%= link_to 'マッチング済み', unfollow_path(@user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
+					   <% elsif current_user.following?(@user) %>
+					   <%= link_to 'フォローを外す', unfollow_path(@user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
+					   <% else %>
+					   <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
+					   <% end %>
 					<% end %>
 				</div>
 				<div class="card-body">
@@ -62,6 +64,7 @@
 					<!--チャット-->
 						<% if @user.id == current_user.id %>
 						<% else %>
+						<% if current_user.following?(@user) && current_user.follower?(@user) %>
 						  <% if @is_room == true %>
 						    <%= link_to "DMを送る", room_path(@room_id), class: "btn btn-outline-success active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
 						  <% else %>
@@ -71,6 +74,7 @@
 						      <% end %>
 						      <%= f.submit "DMを始める", class: "btn btn-outline-success active role=button aria-pressed=true card-link btn-block rounded-pill" %>
 						    <% end %>
+						  <% end %><!--@is_room == true-->
 						  <% end %>
 						<% end %>
 					<!--チャット-->
@@ -104,8 +108,8 @@
 				</div>
 			</div>
 			<% end %>
-			
 		</div>
 	</div>
 </div>
 <%= render 'layouts/user_footer' %>
+
