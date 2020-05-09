@@ -8,6 +8,8 @@ class User < ApplicationRecord
     has_many :direct_messages, dependent: :destroy
     has_many :entries, dependent: :destroy
     has_many :rooms, through: :entries
+    has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+    has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 	mount_uploader :profile_image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -16,7 +18,7 @@ class User < ApplicationRecord
 
     def self.search(search)
       return User.all unless search
-      User.where(['nickname LIKE ?', "%#{search}%"])
+      User.where(['nickname LIKE ? OR skill LIKE ? OR second_skill LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
     end
 
 	def follow(user_id)
@@ -34,5 +36,16 @@ class User < ApplicationRecord
 	def follower?(user)
 	  follower_user.include?(user)
 	end
+
+	def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])# すでにフォローされているか検索
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
 
 end

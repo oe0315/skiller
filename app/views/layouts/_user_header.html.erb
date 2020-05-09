@@ -35,7 +35,7 @@
   </div>
   <div class="form-inline my-2 my-lg-0">
     <%= form_with url:users_path, method: :get, local: true do %>
-    <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"ニックネーム検索" %>
+    <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキル検索" %>
     <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
     <% end %>
   </div>
