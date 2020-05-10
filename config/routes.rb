@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
   get 'users/following/:user_id' => 'users#following',as: 'following'
   get 'users/follower/:user_id' => 'users#follower',as: 'follower'
-  resources :users, only: [:index, :edit, :show, :update, :destroy]
+  resources :users, only: [:index, :edit, :show, :update, :destroy] do
+   resources :reviews, only: [:index, :create]
+ end
   resources :posts, only: [:index, :create, :edit, :update, :destroy]
   resources :recruitment_posts, only: [:index, :create, :edit, :update, :destroy]
   resources :direct_messages, only: [:create]

@@ -1,25 +1,26 @@
 class User < ApplicationRecord
-	has_many :post, dependent: :destroy
-	has_many :recruitment_post, dependent: :destroy
-	has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-    has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-    has_many :following_user, through: :follower, source: :followed, dependent: :destroy # 自分がフォローしている人
-    has_many :follower_user, through: :followed, source: :follower, dependent: :destroy # 自分がフォローされている人
-    has_many :direct_messages, dependent: :destroy
-    has_many :entries, dependent: :destroy
-    has_many :rooms, through: :entries
-    has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-    has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-	mount_uploader :profile_image, ImageUploader
+ has_many :review,dependent: :destroy
+ has_many :post, dependent: :destroy
+ has_many :recruitment_post, dependent: :destroy
+ has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+ has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+ has_many :following_user, through: :follower, source: :followed, dependent: :destroy # 自分がフォローしている人
+ has_many :follower_user, through: :followed, source: :follower, dependent: :destroy # 自分がフォローされている人
+ has_many :direct_messages, dependent: :destroy
+ has_many :entries, dependent: :destroy
+ has_many :rooms, through: :entries
+ has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+ has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+ mount_uploader :profile_image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+ devise :database_authenticatable, :registerable,
+        :recoverable, :rememberable, :validatable
 
-    def self.search(search)
-      return User.all unless search
-      User.where(['nickname LIKE ? OR skill LIKE ? OR second_skill LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
-    end
+  def self.search(search)
+    return User.all unless search
+    User.where(['nickname LIKE ? OR skill LIKE ? OR second_skill LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
 
 	def follow(user_id)
 	  follower.create(followed_id: user_id)

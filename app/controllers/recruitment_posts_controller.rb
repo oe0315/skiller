@@ -2,7 +2,7 @@ class RecruitmentPostsController < ApplicationController
 
 	def index
 		@recruitment_post = RecruitmentPost.new
-		@recruitment_posts = RecruitmentPost.search(params[:search1])
+		@recruitment_posts = RecruitmentPost.search(params[:search]).page(params[:page]).per(10)
 	end
 
 	def create

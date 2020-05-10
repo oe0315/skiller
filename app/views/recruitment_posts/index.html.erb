@@ -22,13 +22,14 @@
 					<%= recruitment_post.body %>
 					<iframe width="550" height="180" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
+				<%= paginate @recruitment_posts %>
 			</div>
 			<% end %>
 		</div>
 		<div class="col-4">
 			<div class="form-inline my-2 my-lg-0">
 			<%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
-			  <%= text_field_tag :search, params[:search1], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
+			  <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
 			  <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
 			<% end %>
 		    </div>

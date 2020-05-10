@@ -24,6 +24,7 @@
 			</div>
 			<% end %>
 			<% end %>
+			<%= paginate @posts %>
 		</div>
 		<div class="col-4">
 			<div class="form-inline my-2 my-lg-0">
@@ -36,7 +37,7 @@
 			<%= form_for(@post, remote: true) do |f| %>
 			<div class="field row">
 				<%= f.label :投稿 %>
-				<%= f.text_area :body %><br/>
+				<%= f.text_area :body %>
 			</div>
 			<div class="field row">
 				<%= f.label :YouTube %>
