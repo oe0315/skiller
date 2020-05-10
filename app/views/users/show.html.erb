@@ -13,7 +13,7 @@
 					<% end %><br/>
 					<% if post.user == current_user %>
 					<%= link_to "編集", edit_post_path(post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %><br/>
-					<%= link_to "削除", post_path(post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
+					<%= link_to "削除", post_path(post), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
 					<% end %>
 				</div>
 				<div class="media-body" style="margin-left: 20px;">

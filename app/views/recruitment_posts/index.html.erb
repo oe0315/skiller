@@ -33,14 +33,14 @@
 			<% end %>
 		    </div>
 			<h3>募集</h3>
-			<%= form_for(@recruitment_post) do |f| %>
+			<%= form_for(@recruitment_post, remote: true) do |f| %>
 			<div class="field row">
 				<%= f.label :タイトル %>
-				<%= f.text_field :title %><br/>
+				<%= f.text_field :title %>
 			</div>
 			<div class="field row">
 				<%= f.label :投稿 %>
-				<%= f.text_area :body %><br/>
+				<%= f.text_area :body %>
 			</div>
 			<div class="field row">
 				<%= f.label :YouTube %>

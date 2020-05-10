@@ -5,26 +5,14 @@
 			<h3>タイムライン</h3>
 			<!--posts一覧-->
 			<% @posts.reverse_each do |post| %>
-			<% if post.user == current_user %>
-			<% else %>
 			<div class="media border" style="margin-top: 20px;">
-				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;"">
+				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;">
 					<%= link_to user_path(post.user) do %>
 					<% if post.user.profile_image? %>
 					<%= image_tag post.user.profile_image.url, :size => '64x64' %>
 					<% else %>
 					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
 					<% end %>
-				    <div class="follow" style="margin-top: 10px;">
-				    <% if current_user.following?(post.user) && current_user.follower?(post.user) %>
-					   <%= link_to 'マッチング済み', unfollow_path(post.user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-sm rounded-pill" %>
-					   <% elsif current_user.following?(post.user) %>
-					   <%= link_to 'フォローを外す', unfollow_path(post.user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-sm rounded-pill" %>
-					   <% else %>
-					   <%= link_to 'フォローする', follow_path(post.user.id), method: :POST, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-sm rounded-pill" %>
-					   <% end %>
-					</div>
-				    <% end %>
 				</div>
 				<div class="media-body" style="margin-left: 30px;">
 					<div class="nickname" style="margin-bottom: 5px;">
@@ -45,7 +33,7 @@
 			<% end %>
 		    </div>
 			<h3>投稿</h3>
-			<%= form_for(@post) do |f| %>
+			<%= form_for(@post, remote: true) do |f| %>
 			<div class="field row">
 				<%= f.label :投稿 %>
 				<%= f.text_area :body %><br/>

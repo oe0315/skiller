@@ -1,0 +1,18 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-md-6 mx-auto">
+	<div class="form-inline">
+		<%= link_to user_path(visitor) do %>
+		<% if visitor.profile_image? %>
+		<%= image_tag visitor.profile_image.url, :size => '64x64' %>
+		<% else %>
+		<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64'%>
+		<% end %>
+		<%= visitor.nickname %><span>さんが</span>
+		<% end %>
+		<% case notification.action %>
+		<% when 'follow' then %>
+		<%= "あなたをフォローしました" %>
+		<% end %>
+	</div>
+</div>
