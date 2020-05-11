@@ -1,5 +1,6 @@
 class User < ApplicationRecord
- has_many :review,dependent: :destroy
+ has_many :reviews, dependent: :destroy
+ belongs_to :reviewing, class_name: "Review", optional: true
  has_many :post, dependent: :destroy
  has_many :recruitment_post, dependent: :destroy
  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

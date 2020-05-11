@@ -1,7 +1,7 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<%= form_for(@user) do |f| %>
+		<%= form_for(@user, url: user_path(@user), html:{method:"patch"}) do |f| %>
 		<% if @user.profile_image? %>
 		<%= image_tag @user.profile_image.url, :size => '100x100' %>
 		<% else %>

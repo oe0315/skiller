@@ -4,19 +4,19 @@
 		<div class="col-8">
 			<h3>レビュー</h3>
 			<!--レビュー一覧-->
-			<% @user.review.reverse_each do |review| %>
+			<% @user.reviews.reverse_each do |review| %>
 			<div class="media border" style="margin-top: 20px;">
 				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;">
-					<%= link_to user_path(review) do %>
-					<% if review.user.profile_image? %>
-					<%= image_tag review.user.profile_image.url, :size => '64x64' %>
+					<%= link_to user_path(review.reviewing_user_id) do %>
+					<% if review.reviewings.profile_image? %>
+					<%= image_tag review.reviewings.profile_image.url, :size => '64x64' %>
 					<% else %>
 					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
 					<% end %>
 				</div>
 				<div class="media-body" style="margin-left: 30px;">
 					<div class="nickname" style="margin-bottom: 5px;">
-					<strong><%= review.user.nickname %></strong>
+					<strong><%= review.reviewings.nickname %></strong>
 				    </div>
 					<p class="media-heading"><%= review.title %><%= review.comment %></p>
 				</div>
@@ -24,6 +24,8 @@
 			<% end %>
 			<% end %>
 		</div>
+		<% if @user == current_user %>
+		<% else %>
 		<div class="col-4">
 			<h3>投稿</h3>
 			<%= form_for [@user, @review] do |f| %>
@@ -31,15 +33,31 @@
 				<%= f.label :タイトル %>
 				<%= f.text_field :title %>
 			</div>
+			<div class="field row" id="star">
+				<%= f.label :評価 %>
+				<%= f.hidden_field :rate, id: :review_star %>
+			</div>
 			<div class="field row">
 				<%= f.label :レビュー %>
 				<%= f.text_area :comment %>
 			</div>
+				<%= f.hidden_field :user_id, value:@user.id %>
 			<div class="actions row">
 				<%= f.submit class: "btn btn-primary" %>
 			</div>
 			<% end %>
 		</div>
+		<% end %>
 	</div>
 </div>
-<%= render 'layouts/user_footer' %>
+　　　　　　　<!--レビューの星-->
+            <script>
+			 $('#star').raty({
+			   size: 36,
+               starOff: '<%= asset_path('star-off.png') %>',
+               starOn : '<%= asset_path('star-on.png') %>',
+			   starHalf: '<%= asset_path('star-half.png') %>',
+			   scoreName: 'review[rate]',
+			   half: true,
+			 });
+			</script><%= render 'layouts/user_footer' %>
