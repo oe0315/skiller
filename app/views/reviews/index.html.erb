@@ -19,6 +19,18 @@
 					<strong><%= review.reviewings.nickname %></strong>
 				    </div>
 					<p class="media-heading"><%= review.title %><%= review.comment %></p>
+					<div id="star-rate-<%= review.id %>"></div>
+			          <script>
+			          $('#star-rate-<%= review.id %>').raty({
+			            size: 36,
+			            starOff:  '<%= asset_path('star-off.png') %>',
+			            starOn : '<%= asset_path('star-on.png') %>',
+			            starHalf: '<%= asset_path('star-half.png') %>',
+			            half: true,
+			            readOnly: true,
+			            score: <%= review.rate %>,
+			          });
+			          </script>
 				</div>
 			</div>
 			<% end %>
@@ -50,7 +62,7 @@
 		<% end %>
 	</div>
 </div>
-　　　　　　　<!--レビューの星-->
+　　　　　　　<!--レビューの投稿時の星-->
             <script>
 			 $('#star').raty({
 			   size: 36,
