@@ -1,22 +1,32 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-8">
+		<div class="col-8" style="height:800px; overflow:auto; padding:10px;">
 			<!--posts一覧-->
 			<% @posts.reverse_each do |post| %>
-			<div class="media border" style="margin-top: 20px;">
+			<div class="media" style="margin-top: 20px;">
 				<div class="media-left media-top text-center" style="margin-left: 20px;">
 					<% if post.user.profile_image? %>
-					<%= image_tag post.user.profile_image.url, :size => '64x64' %>
+					<%= image_tag post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
-					<% end %><br/>
-					<% if post.user == current_user %>
-					<%= link_to "編集", edit_post_path(post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %><br/>
-					<%= link_to "削除", post_path(post), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
 					<% end %>
 				</div>
 				<div class="media-body" style="margin-left: 20px;">
+					<% if post.user == current_user %>
+					<div class="dropdown text-right">
+				      <!-- 切替ボタンの設定 -->
+				      <button type="button" class="btn btn-white btn-sm dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+					      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						      	<div class="dropdown-item">
+						        <%= link_to "編集", edit_post_path(post), class: "btn btn-outline-info btn-block active role=button aria-pressed=true" %><br/>
+						        </div>
+						        <div class="dropdown-item">
+								<%= link_to "削除", post_path(post), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-block active role=button aria-pressed=true" %>
+						        </div>
+					      </div>
+				    </div>
+					<% end %>
 					<p class="media-heading"><%= post.body %></p>
 					<iframe width="600" height="230" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
@@ -25,11 +35,11 @@
 		</div>
 		<div class="col-4">
 			<div class="card" style="width: 18rem; margin-top: 20px;">
-				<div class="profile_image text-center">
+				<div class="profile_image text-center" style="margin-top: 20px;">
 					<% if @user.profile_image? %>
-					<%= image_tag @user.profile_image.url, :size => '200x200' %>
+					<%= image_tag @user.profile_image.url, :size => '200x200',class:"rounded-circle" %>
 					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '200x200' %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '200x200',class:"rounded-circle" %>
 					<% end %>
 				</div>
 				<div class="card-body">
@@ -39,6 +49,7 @@
 					<p class="card-text">フォロワー:<%= link_to follower_path(@user.id) do %><%= @user.followed.count %><% end %></p>
 				</div>
 				<ul class="list-group list-group-flush">
+					<li class="list-group-item"></li>
 					<li class="list-group-item">スキル</li>
 					<li class="list-group-item"><%= @user.skill %></li>
 					<li class="list-group-item"><%= @user.second_skill %></li>
@@ -88,22 +99,33 @@
 	<div class="row">
 		<div class="col-8">
 			<h3>募集一覧</h3>
+			<div class="" style="height:400px; overflow:auto; padding:10px;">
 			<!--募集一覧-->
 			<% @recruitment_posts.reverse_each do |recruitment_post| %>
 			<div class="media" style="margin-top: 20px;">
 				<div class="media-left media-top">
 					<% if recruitment_post.user.profile_image? %>
-					<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64' %>
+					<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
 					<% end %><br/>
 					<%= recruitment_post.user.nickname %><br/>
-					<% if recruitment_post.user == current_user %>
-					<%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %><br/>
-					<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
-					<% end %>
 				</div>
 				<div class="media-body" style="margin-left: 20px;">
+					<% if recruitment_post.user == current_user %>
+				    <div class="dropdown text-right">
+				      <!-- 切替ボタンの設定 -->
+				      <button type="button" class="btn btn-white btn-sm dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+					      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						      	<div class="dropdown-item">
+						        <%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %>
+						        </div>
+						        <div class="dropdown-item">
+								<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
+						        </div>
+					      </div>
+				    </div>
+					<% end %>
 					<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
 					<%= recruitment_post.body %>
 					<iframe width="600" height="230" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -111,6 +133,7 @@
 			</div>
 			<% end %>
 		</div>
+	</div>
 	</div>
 </div>
 <%= render 'layouts/user_footer' %>

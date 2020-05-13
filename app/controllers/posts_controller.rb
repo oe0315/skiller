@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
 	def index
 		@post = Post.new
-		@posts = Post.search(params[:search]).page(params[:page]).per(10)
+		@posts = Post.search(params[:search])
 	end
 
 	def create

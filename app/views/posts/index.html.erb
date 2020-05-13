@@ -1,17 +1,17 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-8">
-			<h3>タイムライン</h3>
-			<!--posts一覧-->
-			<% @posts.reverse_each do |post| %>
-			<div class="media border" style="margin-top: 20px;">
+		<div class="col-lg-8" style="height:800px; overflow:auto; padding:10px;">
+			<!--タイムライン-->
+			<% @posts.last(100).reverse_each do |post| %>
+			<div class="media" style="margin-top: 20px;">
 				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;">
 					<%= link_to user_path(post.user) do %>
 					<% if post.user.profile_image? %>
-					<%= image_tag post.user.profile_image.url, :size => '64x64' %>
+					<%= image_tag post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
+					<% end %>
 					<% end %>
 				</div>
 				<div class="media-body" style="margin-left: 30px;">
@@ -19,32 +19,21 @@
 					<strong><%= post.user.nickname %></strong>
 				    </div>
 					<p class="media-heading"><%= post.body %></p>
-					<iframe width="550" height="180" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="550" height="230" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<% end %>
-			<% end %>
-			<%= paginate @posts %>
 		</div>
-		<div class="col-4">
-			<div class="form-inline my-2 my-lg-0">
-			<%= form_with url:posts_path, :method => 'get', local: true do %>
-			  <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
-			  <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-			<% end %>
-		    </div>
-			<h3>投稿</h3>
+		<div class="col-lg-4">
 			<%= form_for(@post, remote: true) do |f| %>
 			<div class="field row">
-				<%= f.label :投稿 %>
-				<%= f.text_area :body %>
+				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"投稿", required: true  %>
 			</div>
 			<div class="field row">
-				<%= f.label :YouTube %>
-				<%= f.text_field :youtube_url %>
+				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTube_URL", required: true  %>
 			</div>
 			<div class="actions row">
-				<%= f.submit class: "btn btn-primary" %>
+				<%= f.submit "投稿", class: "btn btn-primary btn-block", style: "margin-top: 30px;" %>
 			</div>
 			<% end %>
 		</div>

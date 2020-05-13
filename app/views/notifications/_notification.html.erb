@@ -4,12 +4,12 @@
 	<div class="form-inline">
 		<%= link_to user_path(visitor) do %>
 		<% if visitor.profile_image? %>
-		<%= image_tag visitor.profile_image.url, :size => '64x64' %>
+		<%= image_tag visitor.profile_image.url, :size => '40x40',class:"rounded-circle" %>
 		<% else %>
-		<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64'%>
+		<%= image_tag "/assets/no-image-icon.jpg", :size => '40x40',class:"rounded-circle"%>
+		<% end %>
 		<% end %>
 		<%= visitor.nickname %><span>さんが</span>
-		<% end %>
 		<% case notification.action %>
 		<% when 'follow' then %>
 		<%= "あなたをフォローしました" %>

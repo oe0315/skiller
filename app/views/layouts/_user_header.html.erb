@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-white bg-white">
-  <a class="navbar-brand" href="/"><%= image_tag asset_path("/assets/skiller.png"), :size => '60x60' %></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <a class="navbar-brand" href="/"><%= image_tag asset_path("/assets/skiller3.png"), :size => '100x50' %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,6 +22,35 @@
         <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
       </li>
     </ul>
+    <div class="dropdown">
+      <!-- 切替ボタンの設定 -->
+      <button type="button" class="btn btn-white dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        検索
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-item form-inline my-2 my-lg-0">
+          <%= form_with url:users_path, method: :get, local: true do %>
+          <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキル検索" %>
+          <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
+          <% end %>
+        </div>
+        <div class="dropdown-item form-inline my-2 my-lg-0">
+            <%= form_with url:posts_path, :method => 'get', local: true do %>
+              <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
+              <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+            <% end %>
+        </div>
+        <div class="dropdown-item form-inline my-2 my-lg-0">
+            <%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
+              <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
+              <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+            <% end %>
+        </div>
+        <div class="dropdown-item p-4 text-muted" style="max-width: 200px;">
+            それぞれの検索窓で検索してください。
+        </div>
+        </div>
+      </div>
     <% else %>
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -34,12 +63,6 @@
         <%=link_to "ログイン", new_user_session_path, class:"nav-link" %>
       </li>
     </ul>
-    <% end %>
-  </div>
-  <div class="form-inline my-2 my-lg-0">
-    <%= form_with url:users_path, method: :get, local: true do %>
-    <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキル検索" %>
-    <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
     <% end %>
   </div>
 </nav>
