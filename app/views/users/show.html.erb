@@ -59,7 +59,7 @@
 					<%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
 					<% else %>
 					<% if current_user.following?(@user) && current_user.follower?(@user) %>
-					<%= link_to 'マッチング済み', unfollow_path(@user.id), method: :POST, remote: true, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
+					<%= link_to 'マッチングを外す', unfollow_path(@user.id), method: :POST, remote: true, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
 					<% elsif current_user.following?(@user) %>
 					<%= link_to 'フォローを外す', unfollow_path(@user.id), method: :POST, remote: true, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
 					<% else %>

@@ -1,7 +1,7 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="col-md-6 mx-auto">
-	<div class="form-inline">
+<div class="container">
+	<div class="form-inline" style="margin-top: 10px;">
 		<%= link_to user_path(visitor) do %>
 		<% if visitor.profile_image? %>
 		<%= image_tag visitor.profile_image.url, :size => '40x40',class:"rounded-circle" %>
