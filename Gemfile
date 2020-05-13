@@ -84,3 +84,6 @@ gem 'rails-i18n'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem "kaminari"
+
+gem 'rails_admin', '~> 2.0.0.beta'
+gem 'cancancan'
