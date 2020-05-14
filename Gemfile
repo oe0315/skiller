@@ -87,3 +87,5 @@ gem "kaminari"
 
 gem 'rails_admin', '~> 2.0.0.beta'
 gem 'cancancan'
+
+gem 'font-awesome-rails'

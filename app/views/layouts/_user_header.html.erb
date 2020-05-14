@@ -1,56 +1,64 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-  <a class="navbar-brand" href="/"><%= image_tag asset_path("/assets/skiller3.png"), :size => '100x50' %></a>
+  <a class="navbar-brand" href="/" ><%= image_tag asset_path("/assets/skiller3.png"), :size => '100x50', style:"margin-left: 100px;"%></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
     <% if user_signed_in? %>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="margin-right: 100px;">
       <li class="nav-item">
-        <%=link_to "マイページ", user_path(current_user.id), class:"nav-link" %>
+        <%=link_to user_path(current_user.id), class:"nav-link" do %>
+        <%= fa_icon("user lg", text: "マイページ") %>
+        <% end %>
       </li>
-      <li class="nav-item">
-        <%=link_to "タイムライン", posts_path, class:"nav-link" %>
+      <li class="nav-item" style="margin-left: 80px;">
+        <%=link_to posts_path, class:"nav-link" do %>
+        <%= fa_icon("telegram lg", text: "タイムライン") %>
+        <% end %>
       </li>
-      <li class="nav-item">
-        <%=link_to "募集ページ", recruitment_posts_path, class:"nav-link" %>
+      <li class="nav-item" style="margin-left: 80px;">
+        <%=link_to recruitment_posts_path, class:"nav-link" do %>
+        <%= fa_icon("bullhorn lg", text: "募集") %>
+        <% end %>
       </li>
-      <li class="nav-item">
-        <%=link_to "通知", notifications_path, class:"nav-link" %>
+      <li class="nav-item dropdown" style="margin-left: 80px;">
+        <!-- 切替ボタンの設定 -->
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false"><%= fa_icon("search lg", text: "検索") %></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-item form-inline my-2 my-lg-0">
+            <%= form_with url:users_path, method: :get, local: true do %>
+            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキル検索" %>
+            <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
+            <% end %>
+          </div>
+          <div class="dropdown-item form-inline my-2 my-lg-0">
+            <%= form_with url:posts_path, :method => 'get', local: true do %>
+            <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
+            <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+            <% end %>
+          </div>
+          <div class="dropdown-item form-inline my-2 my-lg-0">
+            <%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
+            <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
+            <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+            <% end %>
+          </div>
+          <div class="dropdown-item p-4 text-muted" style="max-width: 200px;">
+            それぞれの検索窓で検索してください。
+          </div>
+        </div>
       </li>
-      <li class="nav-item">
-        <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %>
+      <li class="nav-item" style="margin-left: 80px;">
+        <%=link_to notifications_path, class:"nav-link" do %>
+        <%= fa_icon("bell lg", text: "通知") %>
+        <% end %>
+      </li>
+      <li class="nav-item" style="margin-left: 80px;">
+        <%=link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+        <%= fa_icon("sign-out lg", text: "ログアウト") %>
+        <% end %>
       </li>
     </ul>
-    <div class="dropdown">
-      <!-- 切替ボタンの設定 -->
-      <button type="button" class="btn btn-white dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        検索
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div class="dropdown-item form-inline my-2 my-lg-0">
-          <%= form_with url:users_path, method: :get, local: true do %>
-          <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキル検索" %>
-          <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
-          <% end %>
-        </div>
-        <div class="dropdown-item form-inline my-2 my-lg-0">
-          <%= form_with url:posts_path, :method => 'get', local: true do %>
-          <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
-          <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-          <% end %>
-        </div>
-        <div class="dropdown-item form-inline my-2 my-lg-0">
-          <%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
-          <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
-          <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-          <% end %>
-        </div>
-        <div class="dropdown-item p-4 text-muted" style="max-width: 200px;">
-          それぞれの検索窓で検索してください。
-        </div>
-      </div>
-    </div>
     <% else %>
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -66,3 +74,4 @@
     <% end %>
   </div>
 </nav>
+

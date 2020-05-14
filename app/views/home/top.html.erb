@@ -1,6 +1,6 @@
 <%= render 'layouts/user_header' %>
 
-<main role="main" style="margin-top: 80px;">
+<main role="main" style="margin-top: 50px;">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-5">ようこそ!</h1>
@@ -10,26 +10,38 @@
   </div>
 
   <div class="container marketing">
-    <!-- カルーセルの下にある3列のテキスト -->
+    <!-- 新着の募集3件 -->
     <div class="row">
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#777" width="100%" height="100%"/></svg>
-        <h2>見出し</h2>
-        <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-        <p><a class="btn btn-secondary" href="#" role="button">詳細を見る &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#777" width="100%" height="100%"/></svg>
-        <h2>見出し</h2>
-        <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-        <p><a class="btn btn-secondary" href="#" role="button">詳細を見る &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><title>一般的なプレースホルダ画像</title><rect fill="#777" width="100%" height="100%"/></svg>
-        <h2>見出し</h2>
-        <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-        <p><a class="btn btn-secondary" href="#" role="button">詳細を見る &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-12 text-center" style="height: 100px;" >
+        <h2>新着募集</h2>
+      </div>
+      <div class="col-lg-12">
+        <div class="row">
+        <% @recruitment_posts.last(6).reverse_each do |recruitment_post| %>
+        <div class="media media-home col-lg-6">
+          <div class="media-left media-top">
+            <%= link_to user_path(recruitment_post.user) do %>
+              <% if recruitment_post.user.profile_image? %>
+              <%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
+              <% else %>
+              <%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="media-body" style="margin-left: 20px;">
+            <div class="nickname" style="margin-bottom: 5px;">
+              <%= recruitment_post.user.nickname %>
+            </div>
+            <h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
+            <p><%= recruitment_post.body %></p>
+            <div class="media-children" style="margin-bottom: 0px;">
+            <iframe width="140%" height="280" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      </div>
     </div><!-- /.row -->
 
     <!-- フィーチャーを開始 -->

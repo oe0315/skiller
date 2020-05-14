@@ -128,6 +128,8 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.12.2)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -333,6 +335,7 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   dotenv-rails
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
