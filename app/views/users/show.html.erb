@@ -1,8 +1,9 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-8" style="height:800px; overflow:auto; padding:10px;">
+		<div class="col-lg-8" style="height:800px; overflow:auto; padding:10px;">
 			<!--posts一覧-->
+			<h4>タイムライン</h4>
 			<% @posts.reverse_each do |post| %>
 			<div class="media" style="margin-top: 20px;">
 				<div class="media-left media-top text-center" style="margin-left: 20px;">
@@ -33,71 +34,13 @@
 			</div>
 			<% end %>
 		</div>
-		<div class="col-4">
-			<div class="card" style="width: 18rem; margin-top: 20px;">
-				<div class="profile_image text-center" style="margin-top: 20px;">
-					<% if @user.profile_image? %>
-					<%= image_tag @user.profile_image.url, :size => '200x200',class:"rounded-circle" %>
-					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '200x200',class:"rounded-circle" %>
-					<% end %>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title"><%= @user.nickname %></h5>
-					<p class="card-text"><%= @user.introduction %></p>
-					<p class="card-text">フォロー:<%= link_to following_path(@user.id) do %><%= @user.follower.count %><% end %></p>
-					<p class="card-text">フォロワー:<%= link_to follower_path(@user.id) do %><%= @user.followed.count %><% end %></p>
-				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><strong>スキル</strong></li>
-					<li class="list-group-item"><span style="margin-left: 10px;">・<%= @user.skill %></span></li>
-					<li class="list-group-item"><sapn style="margin-left: 10px;">・<%= @user.second_skill %></sapn></li>
-				</ul>
-				<div class="card-body">
-					<% if @user == current_user %>
-					<%= link_to "編集", edit_user_path, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
-					<% else %>
-					<% if current_user.following?(@user) && current_user.follower?(@user) %>
-					<%= link_to 'マッチングを外す', unfollow_path(@user.id), method: :POST, remote: true, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
-					<% elsif current_user.following?(@user) %>
-					<%= link_to 'フォローを外す', unfollow_path(@user.id), method: :POST, remote: true, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
-					<% else %>
-					<%= link_to 'フォローする', follow_path(@user.id), method: :POST, remote: true, class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill" %>
-					<% end %>
-					<% end %>
-				</div>
-				<div class="card-body">
-					<% if @user == current_user %>
-					<%= link_to "DM一覧", rooms_path, class: "btn btn-outline-success active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
-					<% else %>
-					<!--チャット-->
-					<% if @user.id == current_user.id %>
-					<% else %>
-					<% if current_user.following?(@user) && current_user.follower?(@user) %>
-					<% if @is_room == true %>
-					<%= link_to "DMを送る", room_path(@room_id), class: "btn btn-outline-success active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
-					<% else %>
-					<%= form_for @room do |f| %>
-					<%= fields_for @entry do |e| %>
-					<%= e.hidden_field :user_id, :value=> @user.id %>
-					<% end %>
-					<%= f.submit "DMを始める", class: "btn btn-outline-success active role=button aria-pressed=true card-link btn-block rounded-pill" %>
-					<% end %>
-					<% end %><!--@is_room == true-->
-					<% end %>
-					<% end %>
-					<!--チャット-->
-					<% end %>
-				</div>
-				<div class="card-body">
-					<%= link_to "レビュー", user_reviews_path(@user.id), class: "btn btn-outline-info active role=button aria-pressed=true card-link btn-block rounded-pill"  %>
-				</div>
-			</div>
+		<div class="col-lg-4">
+			<%= render 'users/profile', user: @user, is_room: @is_room, room_id: @room_id, room: @room, entry: @entry %>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-8">
-			<h3>募集一覧</h3>
+		<div class="col-lg-8">
+			<h4>募集一覧</h4>
 			<div class="" style="height:400px; overflow:auto; padding:10px;">
 				<!--募集一覧-->
 				<% @recruitment_posts.reverse_each do |recruitment_post| %>

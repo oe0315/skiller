@@ -1,13 +1,14 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
+		<div class="col-lg-6 offset-3">
 		<%= form_for(@user, url: user_path(@user), html:{method:"patch"}) do |f| %>
 		<% if @user.profile_image? %>
 		<%= image_tag @user.profile_image.url, :size => '100x100',class:"rounded-circle" %>
 		<% else %>
 		<%= image_tag "/assets/no-image-icon.jpg", :size => '100x100',class:"rounded-circle" %>
 		<% end %>
-		<button type="button" class="btn btn-outline-secondary rounded-pill">
+		<button type="button" class="btn btn-outline-info">
 			<%= f.file_field :profile_image, accept: 'image/jpeg,image/gif,image/png' %>
 		</button>
 			<br />
@@ -50,6 +51,7 @@
 				<%= link_to '退会', user_path, method: :delete, data: {confirm: "本当に退会してもよろしいですか？"} ,class:"btn btn-danger" %>
 				<% end %>
 			</form>
+		</div>
 	</div>
 </div>
 <%= render 'layouts/user_footer' %>

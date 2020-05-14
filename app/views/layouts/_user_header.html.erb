@@ -27,19 +27,19 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <div class="dropdown-item form-inline my-2 my-lg-0">
             <%= form_with url:users_path, method: :get, local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキル検索" %>
+            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキルから見つける" %>
             <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
             <% end %>
           </div>
           <div class="dropdown-item form-inline my-2 my-lg-0">
             <%= form_with url:posts_path, :method => 'get', local: true do %>
-            <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"投稿検索" %>
+            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"投稿から見つける" %>
             <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
             <% end %>
           </div>
           <div class="dropdown-item form-inline my-2 my-lg-0">
             <%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
-            <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2", type:"search", placeholder:"募集検索" %>
+            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"募集から見つける" %>
             <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
             <% end %>
           </div>
