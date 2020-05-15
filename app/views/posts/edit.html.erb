@@ -1,17 +1,22 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<%= form_for(@post) do |f| %>
-		<div class="form-group row">
-			<%= f.label :投稿　%>
-			<%= f.text_area :body, autocomplete: "body", class:"form-control" %>
-		</div>
-		<div class="form-group row">
-			<%= f.label :YouTube　%>
-			<%= f.text_field :youtube_url, autocomplete: "YouTube", class:"form-control" %>
-		</div>
-		<%= f.submit "変更", class:"btn btn-primary" %>
-		<% end %>
+		<div class="col-lg-6 offset-3">
+			<%= form_for(@post) do |f| %>
+			<div class="form-group row">
+				<%= f.label :投稿　%>
+				<%= f.text_area :body, autocomplete: "body", class:"form-control", rows:"7px", placeholder:"投稿", required: true %>
+			</div>
+			<div class="form-group row">
+				<%= f.label :YouTube　%>
+				<%= f.text_field :youtube_url, autocomplete: "YouTube", class:"form-control", placeholder:"YouTube_URL", required: true %>
+			</div>
+			<div class="form-group row">
+			<%= f.submit "変更", class:"btn btn-info btn-block" %>
+		    </div>
+			<% end %>
+	    </div>
 	</div>
 </div>
 <%= render 'layouts/user_footer' %>
+

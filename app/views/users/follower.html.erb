@@ -1,31 +1,63 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Introduction</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @user.follower_user.each do |user| %>
-			<tr>
-				<td><%= user.nickname %></td>
-				<td><%= user.introduction %></td>
-				<td>
-					<% unless user == current_user %>
-					<% if current_user.following?(user) %>
-					<%= link_to 'フォロー解除', unfollow_path(user.id), method: :POST,class:"btn btn-danger", remote: true %>
-					<% else %>
-					<%= link_to 'フォローする', follow_path(user.id), method: :POST,class:"btn btn-info" %>
-					<% end %>
-					<% end %>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<div class="table table-hover table-responsive">
+		<table class="table text-nowrap">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ニックネーム</th>
+					<th>スキル1</th>
+					<th>スキル2</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @user == current_user %><!--自分の場合-->
+				<% @user.follower_user.each do |user| %>
+				<tr>
+					<th scope="row">
+						<%= link_to user_path(user) do %>
+						<% if user.profile_image? %>
+						<%= image_tag user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
+						<% else %>
+						<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
+						<% end %>
+						<% end %>
+					</th>
+					<td class="align-middle"><%= user.nickname %></td>
+					<td class="align-middle"><%= user.skill %></td>
+					<td class="align-middle"><%= user.second_skill %></td>
+					<td class="align-middle">
+						<% if current_user.following?(user) && current_user.follower?(user) %>
+						<%= link_to 'マッチング済み', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-info aria-pressed=true card-link rounded-pill" %>
+						<% elsif current_user.following?(user) %>
+						<%= link_to 'フォローを外す', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-danger aria-pressed=true card-link rounded-pill" %>
+						<% else %>
+						<%= link_to 'フォローする', follow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-primary aria-pressed=true card-link rounded-pill" %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+				<% else %><!--他のuserの場合-->
+				<% @user.follower_user.each do |user| %>
+				<tr>
+					<th scope="row">
+						<%= link_to user_path(user) do %>
+						<% if user.profile_image? %>
+						<%= image_tag user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
+						<% else %>
+						<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
+						<% end %>
+						<% end %>
+					</th>
+					<td class="align-middle"><%= user.nickname %></td>
+					<td class="align-middle"><%= user.skill %></td>
+					<td class="align-middle"><%= user.second_skill %></td>
+				</tr>
+				<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>
 <%= render 'layouts/user_footer' %>

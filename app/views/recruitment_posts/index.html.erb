@@ -1,10 +1,10 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-7" style="height:800px; overflow:auto; padding:10px;">
+		<div class="col-lg-7" style="height:800px; overflow:auto; padding:10px; background-color: #fffaf0;">
 			<!--posts一覧-->
 			<% @recruitment_posts.reverse_each do |recruitment_post| %>
-			<div class="media" style="margin-top: 20px; padding-left:20px;">
+			<div class="media" style="margin-bottom: 80px; padding-left:20px;">
 				<div class="media-left media-top text-center">
 					<%= link_to user_path(recruitment_post.user) do %>
 					<% if recruitment_post.user.profile_image? %>
@@ -27,7 +27,7 @@
 		</div>
 		<div class="offset-lg-1 col-lg-4">
 
-			<h3>募集</h3>
+			<h4>募集</h4>
 			<%= form_for(@recruitment_post, remote: true) do |f| %>
 			<div class="field row">
 				<%= f.text_field :title, class:"form-control", style: "margin-top: 30px;", placeholder:"タイトル", required: true %>

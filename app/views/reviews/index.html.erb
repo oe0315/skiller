@@ -2,41 +2,41 @@
 <div class="container">
 	<div class="row">
 		<div class="col-8">
-			<h3>レビュー</h3>
+			<h4>レビュー</h4>
 			<!--レビュー一覧-->
 			<% @user.reviews.reverse_each do |review| %>
-			<div class="media border" style="margin-top: 20px;">
+			<div class="media" style="margin-top: 20px;">
 				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;">
 					<%= link_to user_path(review.reviewing_user_id) do %>
 					<% if review.reviewings.profile_image? %>
-					<%= image_tag review.reviewings.profile_image.url, :size => '64x64' %>
+					<%= image_tag review.reviewings.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 					<% else %>
-					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64' %>
+					<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
+					<% end %>
 					<% end %>
 				</div>
 				<div class="media-body" style="margin-left: 30px;">
 					<div class="nickname" style="margin-bottom: 5px;">
-					<strong><%= review.reviewings.nickname %></strong>
-				    </div>
+						<strong><%= review.reviewings.nickname %></strong>
+					</div>
 					<p class="media-heading"><%= review.title %><%= review.comment %></p>
 					<div id="star-rate-<%= review.id %>"></div>
-			          <script>
-			          $('#star-rate-<%= review.id %>').raty({
-			            size: 36,
-			            starOff:  '<%= asset_path('star-off.png') %>',
-			            starOn : '<%= asset_path('star-on.png') %>',
-			            starHalf: '<%= asset_path('star-half.png') %>',
-			            half: true,
-			            readOnly: true,
-			            score: <%= review.rate %>,
-			          });
-			          </script>
+					<script>
+						$('#star-rate-<%= review.id %>').raty({
+							size: 36,
+							starOff:  '<%= asset_path('star-off.png') %>',
+							starOn : '<%= asset_path('star-on.png') %>',
+							starHalf: '<%= asset_path('star-half.png') %>',
+							half: true,
+							readOnly: true,
+							score: <%= review.rate %>,
+						});
+					</script>
 				</div>
 			</div>
 			<% end %>
-			<% end %>
 		</div>
-		<% if @user == current_user %>
+		<% if @user == current_user %><!--レビューの投稿-->
 		<% else %>
 		<div class="col-4">
 			<h3>投稿</h3>
@@ -53,7 +53,7 @@
 				<%= f.label :レビュー %>
 				<%= f.text_area :comment %>
 			</div>
-				<%= f.hidden_field :user_id, value:@user.id %>
+			<%= f.hidden_field :user_id, value:@user.id %>
 			<div class="actions row">
 				<%= f.submit class: "btn btn-primary" %>
 			</div>
@@ -63,13 +63,13 @@
 	</div>
 </div>
 　　　　　　　<!--レビューの投稿時の星-->
-            <script>
-			 $('#star').raty({
-			   size: 36,
-               starOff: '<%= asset_path('star-off.png') %>',
-               starOn : '<%= asset_path('star-on.png') %>',
-			   starHalf: '<%= asset_path('star-half.png') %>',
-			   scoreName: 'review[rate]',
-			   half: true,
-			 });
-			</script><%= render 'layouts/user_footer' %>
+<script>
+	$('#star').raty({
+		size: 36,
+		starOff: '<%= asset_path('star-off.png') %>',
+		starOn : '<%= asset_path('star-on.png') %>',
+		starHalf: '<%= asset_path('star-half.png') %>',
+		scoreName: 'review[rate]',
+		half: true,
+	});
+	</script><%= render 'layouts/user_footer' %>

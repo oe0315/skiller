@@ -1,28 +1,51 @@
 <%= render 'layouts/user_header' %>
-<h1>DM</h1>
-
-<h4>参加者</h4>
-<% @entries.each do |f| %>
-  <h5><strong><a href="/users/<%= f.user.id %>"><%= f.user.nickname%>さん</a></strong></h5>
-<% end %>
-
-<hr>
-<% if @direct_messages.present? %>
-  <% @direct_messages.last(10).each do |f| %>
-    <strong><%= f.message %></strong>
-    <small>by <strong><a href="/users/<%= f.user_id %>"><%= f.user.nickname %>さん</a></strong></small>
-    <hr>
-  <% end %>
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
-
-<%= form_for @direct_message do |f| %>
-  <%= f.text_field :message, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
-
-<%= link_to "ユーザー一覧に戻る", users_path %>
+<div class="container">
+  <div class="row">
+    <div class="ol-lg-9 offset-3">
+       <%= link_to "戻る", rooms_path %>
+    </div>
+    <div class="col-6 offset-3">
+      <div class="dm_list__content__link__box__name text-center">
+        <%= opponent_user(@room) %>
+      </div>
+      <% if @direct_messages.present? %>
+      <% @direct_messages.last(20).each do |direct_message| %>
+      　<% if direct_message.user == current_user %>
+      <div class="text-right">
+        <div class="rounded-pill p-2" style="background-color: #00ffff; display: inline-block;">
+          <%= direct_message.message %>
+        </div>
+      </div>
+      <% else %>
+      <div class="">
+        <% if direct_message.user.profile_image? %>
+        <%= image_tag direct_message.user.profile_image.url, :size => '40x40',class:"rounded-circle" %>
+        <% else %>
+        <%= image_tag "/assets/no-image-icon.jpg", :size => '40x40',class:"rounded-circle" %>
+        <% end %>
+        <div class="rounded-pill p-2" style="background-color: #faf0e6; display: inline-block;">
+          <%= direct_message.message %>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      <% else %>
+      <h3 class="text-center">メッセージはまだありません</h3>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-8 offset-2">
+    <div class="row">
+      <div class="col-lg-7 offset-2">
+        <%= form_for @direct_message do |f| %>
+        <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class:"form-control rounded-pill p-2", style: "margin-top:50px;", rows:"7px", required: true %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+      </div>
+      <div class="col-lg-1">
+        <%= f.submit "送信", class: "btn btn-outline-warning role=button active aria-pressed=true card-link rounded-pill", style: "margin-top:50px;" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render 'layouts/user_footer' %>

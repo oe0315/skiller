@@ -1,10 +1,10 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-7" style="height:800px; overflow:auto; padding:10px;">
+		<div class="col-lg-7" style="height:800px; overflow:auto; padding:10px; background-color: #fffaf0;">
 			<!--タイムライン-->
 			<% @posts.last(100).reverse_each do |post| %>
-			<div class="media" style="margin-top: 20px;">
+			<div class="media" style="margin-bottom: 80px;" >
 				<div class="media-left media-top text-center" style="margin-top: 10px; padding-left:10px;">
 					<%= link_to user_path(post.user) do %>
 					<% if post.user.profile_image? %>
@@ -25,6 +25,7 @@
 			<% end %>
 		</div>
 		<div class="offset-lg-1 col-lg-4">
+			<h4>投稿</h4>
 			<%= form_for(@post, remote: true) do |f| %>
 			<div class="field row">
 				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"投稿", required: true  %>
