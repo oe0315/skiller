@@ -1,9 +1,9 @@
 <%= render 'layouts/user_header' %>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-8" style="height:800px; overflow:auto; padding:10px; background-color: #f5f5f5;">
+		<div class="col-lg-8" style="height:800px; overflow:auto; padding:10px; background-color: #fffaf0;">
 			<!--posts一覧-->
-			<h4>タイムライン</h4>
+			<h4><strong>タイムライン</strong></h4>
 			<% @posts.reverse_each do |post| %>
 			<div class="media" style="margin-top: 20px;">
 				<div class="media-left media-top text-center" style="margin-left: 20px;">
@@ -34,14 +34,14 @@
 			</div>
 			<% end %>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-3 offset-lg-1">
 			<%= render 'users/profile', user: @user, is_room: @is_room, room_id: @room_id, room: @room, entry: @entry %>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-8">
-			<h4>募集一覧</h4>
-			<div class="" style="height:400px; overflow:auto; padding:10px; background-color: #f5f5f5;">
+		<div class="col-lg-8" style="height:400px; overflow:auto; padding:10px; background-color: #f5f5f5;" >
+			<h4><strong>募集一覧</strong></h4>
+			<div class="">
 				<!--募集一覧-->
 				<% @recruitment_posts.reverse_each do |recruitment_post| %>
 				<div class="media" style="margin-top: 20px;">
@@ -50,8 +50,7 @@
 						<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 						<% else %>
 						<%= image_tag "/assets/no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
-						<% end %><br/>
-						<%= recruitment_post.user.nickname %><br/>
+						<% end %>
 					</div>
 					<div class="media-body" style="margin-left: 20px;">
 						<% if recruitment_post.user == current_user %>
@@ -69,7 +68,7 @@
 						</div>
 						<% end %>
 						<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
-						<%= recruitment_post.body %>
+						<p class="media-heading"><%= recruitment_post.body %></p>
 						<iframe width="100%" height="230" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				</div>
