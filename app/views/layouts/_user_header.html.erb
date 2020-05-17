@@ -3,10 +3,10 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <% if user_signed_in? %>
     <ul class="navbar-nav" style="margin-right: 100px;">
-      <li class="nav-item">
+      <li class="nav-item"style="margin-left: 80px;">
         <%=link_to user_path(current_user.id), class:"nav-link" do %>
         <%= fa_icon("user lg", text: "マイページ") %>
         <% end %>

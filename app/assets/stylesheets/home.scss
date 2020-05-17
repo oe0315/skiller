@@ -12,6 +12,14 @@
   height:400px;
 }
 
+.footer_image {
+  background-image: image-url("/assets/Thumbnail.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:100%;
+  height:300px;
+}
+
 .navbar-expand-lg{
   box-shadow: 2px 2px 4px gray;
   margin-bottom: 30px;
@@ -28,12 +36,8 @@
 }
 
 
-/* 全体的なスタイル
--------------------------------------------------- */
-/* フッターの下の空白と明るめの本文 */
 
 body {
-  padding-bottom: 3rem;
   color: #5a5a5a;
 }
 
