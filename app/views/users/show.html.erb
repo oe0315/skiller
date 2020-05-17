@@ -20,10 +20,10 @@
 						<button type="button" class="btn btn-white btn-sm dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<div class="dropdown-item">
-								<%= link_to "編集", edit_post_path(post), class: "btn btn-outline-info btn-block active role=button aria-pressed=true" %><br/>
+								<%= link_to "編集", edit_post_path(post), class: "btn btn-outline-info btn-block role=button aria-pressed=true" %>
 							</div>
 							<div class="dropdown-item">
-					           <%= link_to "削除", post_path(post), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-block active role=button aria-pressed=true" %>
+					           <%= link_to "削除", post_path(post), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-block role=button aria-pressed=true" %>
 							</div>
 						</div>
 					</div>
@@ -59,10 +59,10 @@
 							<button type="button" class="btn btn-white btn-sm dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<div class="dropdown-item">
-									<%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-sm active role=button aria-pressed=true" %>
+									<%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-block role=button aria-pressed=true" %>
 								</div>
 								<div class="dropdown-item">
-									<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-sm active role=button aria-pressed=true" %>
+									<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-block role=button aria-pressed=true" %>
 								</div>
 							</div>
 						</div>

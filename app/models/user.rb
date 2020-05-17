@@ -15,10 +15,11 @@ class User < ApplicationRecord
  mount_uploader :profile_image, ImageUploader
 
  validates :last_name,length: {maximum: 10, minimum: 1}
- validates :frist_name,length: {maximum: 10, minimum: 1}
+ validates :first_name,length: {maximum: 10, minimum: 1}
  validates :nickname,length: {maximum: 20, minimum: 2}
  validates :skill,length: {maximum: 20, minimum: 2}
  validates :second_skill,length: {maximum: 20}
+ validates :introduction,length: {maximum: 200}
 
 
 

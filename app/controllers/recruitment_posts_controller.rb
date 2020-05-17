@@ -1,4 +1,5 @@
 class RecruitmentPostsController < ApplicationController
+	before_action :authenticate_user!
 
 	def index
 		@recruitment_post = RecruitmentPost.new

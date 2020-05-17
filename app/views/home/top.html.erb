@@ -55,10 +55,12 @@
         <div class="offset-3 col-lg-9">
           <h1 style="color: white;">さあはじめよう！</h1>
         </div>
+        <% unless user_signed_in? %>
         <div class="offset-5">
           <%=link_to "新規登録(無料)", new_user_registration_path, class: "btn btn-outline-success active" %>
           <%=link_to "ログイン", new_user_session_path, class: "btn btn-outline-info active" %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
