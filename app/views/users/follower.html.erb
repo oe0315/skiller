@@ -29,11 +29,11 @@
 					<td class="align-middle"><%= user.second_skill %></td>
 					<td class="align-middle">
 						<% if current_user.following?(user) && current_user.follower?(user) %>
-						<%= link_to 'マッチング済み', unfollow_path(user.id), method: :POST, class: "btn btn-outline-info aria-pressed=true card-link rounded-pill" %>
+						<%= link_to 'マッチング済み', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-info aria-pressed=true card-link rounded-pill" %>
 						<% elsif current_user.following?(user) %>
-						<%= link_to 'フォローを外す', unfollow_path(user.id), method: :POST, class: "btn btn-outline-danger aria-pressed=true card-link rounded-pill" %>
+						<%= link_to 'フォローを外す', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-danger aria-pressed=true card-link rounded-pill" %>
 						<% else %>
-						<%= link_to 'フォローする', follow_path(user.id), method: :POST, class: "btn btn-outline-primary aria-pressed=true card-link rounded-pill" %>
+						<%= link_to 'フォローする', follow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-primary aria-pressed=true card-link rounded-pill" %>
 						<% end %>
 					</td>
 				</tr>
