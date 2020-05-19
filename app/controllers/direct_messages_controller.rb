@@ -3,7 +3,11 @@ class DirectMessagesController < ApplicationController
 
 	def create
 		if Entry.where(:user_id => current_user.id, :room_id => params[:direct_message][:room_id]).present?
-	      @direct_message = DirectMessage.create(message_params)
+		  @direct_message = DirectMessage.create(message_params)
+		  @room = Room.find(@direct_message.room_id)
+		  user = @room.users.where.not(id: current_user)
+		  binding.pry
+		  @direct_message.create_notification_direct_message(current_user, user)
 	      redirect_to room_path(@direct_message.room_id)
 	    else
 	      redirect_back(fallback_location: root_path)

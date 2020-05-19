@@ -1,7 +1,7 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="container">
-	<div class="form-inline border-bottom" style="padding: 10px 0 ;">
+<div class="container border-bottom">
+	<div class="form-inline " style="padding: 10px 0 ;">
 		<%= link_to user_path(visitor) do %>
 		<% if visitor.profile_image? %>
 		<%= image_tag visitor.profile_image.url, :size => '40x40',class:"rounded-circle" %>
@@ -13,6 +13,11 @@
 		<% case notification.action %>
 		<% when 'follow' then %>
 		<%= "あなたをフォローしました。" %>
+		<% when 'direct_message' then %>
+		<%= "あなたにメッセージを送信しました。" %>
 		<% end %>
+	</div>
+	<div class="text-right">
+	<%= time_ago_in_words(notification.created_at).upcase %>
 	</div>
 </div>

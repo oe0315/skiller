@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_151615) do
+ActiveRecord::Schema.define(version: 2020_05_18_162757) do
 
   create_table "direct_messages", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -30,14 +30,11 @@ ActiveRecord::Schema.define(version: 2020_05_13_151615) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
-    t.integer "post_id"
-    t.integer "comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_notifications_on_comment_id"
-    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.integer "direct_message_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
