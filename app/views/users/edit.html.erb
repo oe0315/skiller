@@ -6,7 +6,7 @@
 			<% if @user.profile_image? %>
 			<%= image_tag @user.profile_image.url, :size => '100x100',class:"rounded-circle" %>
 			<% else %>
-			<%= image_tag "/assets/no-image-icon.jpg", :size => '100x100',class:"rounded-circle" %>
+			<%= image_tag "no-image-icon.jpg", :size => '100x100',class:"rounded-circle" %>
 			<% end %>
 			<button type="button" class="btn btn-outline-info">
 				<%= f.file_field :profile_image, accept: 'image/jpeg,image/gif,image/png' %>

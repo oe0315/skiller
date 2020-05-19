@@ -14,7 +14,6 @@ class DirectMessage < ApplicationRecord
         if notification.visitor_id == notification.visited_id
             notification.checked = true
         end
-            binding.pry
             notification.save if notification.valid?
     end
 end

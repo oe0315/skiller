@@ -4,7 +4,7 @@
 		<% if user.profile_image? %>
 		<%= image_tag user.profile_image.url, :size => '200x200',class:"rounded-circle" %>
 		<% else %>
-		<%= image_tag "/assets/no-image-icon.jpg", :size => '200x200',class:"rounded-circle" %>
+		<%= image_tag "no-image-icon.jpg", :size => '200x200',class:"rounded-circle" %>
 		<% end %>
 	</div>
 	<div class="card-body">
@@ -16,7 +16,7 @@
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item"><strong>スキル</strong></li>
 		<li class="list-group-item"><span style="margin-left: 10px;">・<%= user.skill %></span></li>
-		<li class="list-group-item"><sapn style="margin-left: 10px;">・<%= user.second_skill %></sapn></li>
+		<li class="list-group-item"><span style="margin-left: 10px;">・<%= user.second_skill %></sapn></li>
 	</ul>
 	<div class="card-body">
 		<% if user == current_user %>

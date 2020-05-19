@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .jumbotron {
-  background-image: image-url("/assets/skiller3.png");
+  background-image: image-url("skiller3.png");
   background-repeat:  no-repeat;
   background-position:center center;
   background-size:contain;
@@ -13,7 +13,7 @@
 }
 
 .footer_image {
-  background-image: image-url("/assets/Thumbnail.png");
+  background-image: image-url("Thumbnail.png");
   background-repeat: no-repeat;
   background-size: cover;
   width:100%;
