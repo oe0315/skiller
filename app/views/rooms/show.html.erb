@@ -18,12 +18,14 @@
       </div>
       <% else %>
       <div class="">
-        <% if direct_message.user.profile_image? %>
-        <%= image_tag direct_message.user.profile_image.url, :size => '40x40',class:"rounded-circle" %>
-        <% else %>
-        <%= image_tag "no-image-icon.jpg", :size => '40x40',class:"rounded-circle" %>
+        <%= link_to user_path(direct_message.user) do %>
+          <% if direct_message.user.profile_image? %>
+          <%= image_tag direct_message.user.profile_image.url, :size => '40x40',class:"rounded-circle" %>
+          <% else %>
+          <%= image_tag "no-image-icon.jpg", :size => '40x40',class:"rounded-circle" %>
+          <% end %>
+          <div class="rounded-pill p-2" style="background-color: #faf0e6; display: inline-block;">
         <% end %>
-        <div class="rounded-pill p-2" style="background-color: #faf0e6; display: inline-block;">
           <%= direct_message.message %>
         </div>
       </div>

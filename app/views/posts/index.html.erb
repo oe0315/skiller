@@ -1,7 +1,7 @@
 <%= render 'layouts/user_header' %>
 <div class="container mb-5">
 	<div class="row">
-		<div class="col-lg-7" style="height:1800px; overflow:auto; padding:10px; background-color: #fffaf0;">
+		<div class="col-lg-7" style="height:700px; overflow:auto; padding:10px; background-color: #fffaf0;">
 			<!--タイムライン-->
 			<% @posts.last(100).reverse_each do |post| %>
 			<div class="media" style="margin-bottom: 80px;" >
@@ -16,10 +16,10 @@
 				</div>
 				<div class="media-body" style="margin-left: 30px;">
 					<div class="nickname" style="margin-bottom: 5px;">
-					<strong><%= post.user.nickname %></strong>
+					<strong><%= post.user.nickname %></strong>・<%= time_ago_in_words(post.created_at).upcase %>
 				    </div>
 					<p class="media-heading"><%= post.body %></p>
-					<iframe width="100%" height="230" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="320" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<% end %>

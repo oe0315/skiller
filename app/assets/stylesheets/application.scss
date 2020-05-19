@@ -17,19 +17,23 @@
  @import "bootstrap";
  @import "font-awesome";
 
-footer {
- width:100%;
- color:#FFF;
- font-size:12px;
-}
+
+
+ 
+
+ footer {
+    width:100%;
+    color:#FFF;
+    font-size:12px;
+ }
 
  .nav-item a{
-  text-decoration:none;
+    text-decoration:none;
   }
 
  .nav-item a:hover{
-  text-decoration:none;
-  color: #ff00ff !important;
-  transition: all 0.3s ease 0s;
-  transform: translateY(-0.1875em);
+    text-decoration:none;
+    color: #ff00ff !important;
+    transition: all 0.3s ease 0s;
+    transform: translateY(-0.1875em);
   }
