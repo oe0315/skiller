@@ -1,13 +1,13 @@
 <%= render 'layouts/user_header' %>
 <div class="container mb-5">
 	<div class="row">
-			<div class="col-lg-8" style="color:inherit; color: black;">
+			<div class="col-lg-8" style="color:black;">
 				<ul id="myTab" class="nav nav-tabs" role="tablist">
 					<li class="nav-item" role="presentation">
-						<a href="#timeline" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">タイムライン</a>
+						<a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">タイムライン</a>
 					</li>
 					<li class="nav-item" role="presentation">
-						<a href="#recruitment" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">募集</a>
+						<a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">募集</a>
 					</li>
 				</ul>
 			</div>
@@ -19,7 +19,7 @@
 					<div class="media" style="margin-top: 20px;">
 						<div class="media-left media-top text-center" style="margin-left: 20px;">
 							<% if post.user.profile_image? %>
-							<%= image_tag asset_path(post.user.profile_image.url), :size => '64x64',class:"rounded-circle" %>
+							<%= image_tag post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 							<% else %>
 							<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
 							<% end %>
@@ -54,7 +54,7 @@
 					<div class="media">
 						<div class="media-left media-top">
 							<% if recruitment_post.user.profile_image? %>
-							<%= image_tag asset_path(recruitment_post.user.profile_image.url), :size => '64x64',class:"rounded-circle" %>
+							<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
 							<% else %>
 							<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
 							<% end %>

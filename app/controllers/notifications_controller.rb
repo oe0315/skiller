@@ -7,4 +7,9 @@ class NotificationsController < ApplicationController
 			notification.update_attributes(checked: true)
 		end
 	end
+
+	def destroy_all
+		Notification.destroy_all
+        redirect_to notifications_path
+	end
 end

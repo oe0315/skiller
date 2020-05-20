@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
   get 'users/following/:user_id' => 'users#following',as: 'following'
   get 'users/follower/:user_id' => 'users#follower',as: 'follower'
+  delete 'notifications/destroy_all' => 'notifications#destroy_all'
   resources :users, only: [:index, :edit, :show, :update, :destroy] do
    resources :reviews, only: [:index, :create]
  end

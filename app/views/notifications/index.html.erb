@@ -3,14 +3,19 @@
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3">
 			<h4>通知</h4>
+			<div class="text-right">
+				<%= link_to notifications_destroy_all_path, class: "btn btn-outline-danger btn-sm rounded-pill", remote: true, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} do %>
+				<%= fa_icon("trash lg", text: "全て削除") %>
+				<% end %>
+			</div>
 			<div class="rounded" style="background-color: #ffffe0;">
-			<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-			<% if notifications.exists? %>
-			<%= render notifications %>
-			<% else %>
-			<p>通知はありません</p>
-			<% end %>
-		</div>
+				<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+				<% if notifications.exists? %>
+				<%= render notifications %>
+				<% else %>
+				<p>通知はありません</p>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-  <a class="navbar-brand" href="/" ><%= image_tag ("skiller3.png"), :size => '100x50', style:"margin-left: 100px;"%></a>
+  <a class="navbar-brand" href="/" ><%= image_tag ("skiller3.png"), :size => '100x50' %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -50,9 +50,12 @@
       </li>
       <li class="nav-item" style="margin-left: 80px;">
         <%=link_to notifications_path, class:"nav-link" do %>
-        <%= fa_icon("bell lg", text: "通知") %>
+          <%= fa_icon("bell lg", text: "通知") %>
         <% end %>
       </li>
+          <% if unchecked_notifications.any? %>
+          <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
       <li class="nav-item" style="margin-left: 80px;">
         <%=link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
         <%= fa_icon("sign-out lg", text: "ログアウト") %>
