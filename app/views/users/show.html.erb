@@ -19,7 +19,7 @@
 					<div class="media" style="margin-top: 20px;">
 						<div class="media-left media-top text-center" style="margin-left: 20px;">
 							<% if post.user.profile_image? %>
-							<%= image_tag post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
+							<%= image_tag asset_path(post.user.profile_image.url), :size => '64x64',class:"rounded-circle" %>
 							<% else %>
 							<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
 							<% end %>
@@ -54,7 +54,7 @@
 					<div class="media">
 						<div class="media-left media-top">
 							<% if recruitment_post.user.profile_image? %>
-							<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
+							<%= image_tag asset_path(recruitment_post.user.profile_image.url), :size => '64x64',class:"rounded-circle" %>
 							<% else %>
 							<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
 							<% end %>
