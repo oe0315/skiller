@@ -4,7 +4,7 @@
     <div class="ol-lg-9 offset-3">
        <%= link_to "戻る", rooms_path %>
     </div>
-    <div class="col-6 offset-3">
+    <div class="col-lg-6 offset-lg-3 col-xs-12">
       <div class="dm_list__content__link__box__name text-center">
         <%= opponent_user(@room) %>
       </div>
@@ -36,18 +36,18 @@
       <% end %>
     </div>
   </div>
-  <div class="col-lg-8 offset-2">
+
     <div class="row">
-      <div class="col-lg-7 offset-2">
+      <div class="col-lg-4 offset-lg-4">
         <%= form_for @direct_message do |f| %>
         <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class:"form-control rounded-pill p-2", style: "margin-top:50px;", rows:"7px", required: true %>
         <%= f.hidden_field :room_id, :value => @room.id %>
       </div>
-      <div class="col-lg-1 mb-5">
+      <div class="col-lg-1 mb-5 text-right">
         <%= f.submit "送信", class: "btn btn-outline-warning role=button active aria-pressed=true card-link rounded-pill", style: "margin-top:50px;" %>
         <% end %>
       </div>
     </div>
-  </div>
+
 </div>
 <%= render 'layouts/user_footer' %>

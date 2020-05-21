@@ -50,12 +50,15 @@
       </li>
       <li class="nav-item" style="margin-left: 80px;">
         <%=link_to notifications_path, class:"nav-link" do %>
-          <%= fa_icon("bell lg", text: "通知") %>
-        <% end %>
-      </li>
-     　　  <% if unchecked_notifications.any? %>
+          <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
+          <%= fa_icon("bell lg", text: "通知") %>
+          <% else %>
+          <%= fa_icon("bell lg", text: "通知") %>
           <% end %>
+          <% end %>
+      </li>
+     　　 
       <li class="nav-item" style="margin-left: 80px;">
         <%=link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
         <%= fa_icon("sign-out lg", text: "ログアウト") %>
