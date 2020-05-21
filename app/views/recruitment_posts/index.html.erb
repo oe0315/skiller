@@ -1,10 +1,10 @@
 <%= render 'layouts/user_header' %>
 <div class="container mb-5">
 	<div class="row">
-		<div class="col-lg-7" style="height:1450px; overflow:auto; padding:10px; background-color: #fffaf0;">
+		<div class="col-lg-7" style="height:500px; overflow:auto; padding:10px; background-color: #fffaf0;">
 			<!--posts一覧-->
 			<% @recruitment_posts.reverse_each do |recruitment_post| %>
-			<div class="media" style="margin-bottom: 80px; padding-left:20px;">
+			<div class="media" padding-left:20px;">
 				<div class="media-left media-top text-center">
 					<%= link_to user_path(recruitment_post.user) do %>
 					<% if recruitment_post.user.profile_image? %>
@@ -20,25 +20,25 @@
 				    </div>
 					<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
 					<p><%= recruitment_post.body %></p>
-					<iframe width="95%" height="320" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					
 				</div>
 			</div>
+			<iframe class="post_youtube" width="90%" height="320" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<% end %>
 		</div>
 		<div class="offset-lg-1 col-lg-4">
 
-			<h4>募集</h4>
 			<%= form_for(@recruitment_post, remote: true) do |f| %>
-			<div class="field row">
+			<div class="field row pr-3 pl-3">
 				<%= f.text_field :title, class:"form-control", style: "margin-top: 30px;", placeholder:"タイトル", required: true %>
 			</div>
-			<div class="field row">
+			<div class="field row pr-3 pl-3">
 				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"投稿", required: true %>
 			</div>
-			<div class="field row">
+			<div class="field row pr-3 pl-3">
 				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTube", required: true %>
 			</div>
-			<div class="actions row">
+			<div class="actions row pr-3 pl-3">
 				<%= f.submit "投稿", class: "btn btn-primary", class: "btn btn-primary btn-block", style: "margin-top: 30px;" %>
 			</div>
 			<% end %>

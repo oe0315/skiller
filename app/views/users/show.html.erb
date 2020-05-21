@@ -1,7 +1,10 @@
 <%= render 'layouts/user_header' %>
 <div class="container mb-5">
 	<div class="row">
-			<div class="col-lg-8" style="color:black;">
+			<div class="col-lg-3">
+				<%= render 'users/profile', user: @user, is_room: @is_room, room_id: @room_id, room: @room, entry: @entry %>
+			</div>
+			<div class="col-lg-8 offset-lg-1" style="height:800px; overflow:auto; padding:10px; background-color:  #fffaf0;">
 				<ul id="myTab" class="nav nav-tabs" role="tablist">
 					<li class="nav-item" role="presentation">
 						<a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">タイムライン</a>
@@ -10,8 +13,6 @@
 						<a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">募集</a>
 					</li>
 				</ul>
-			</div>
-			<div class="col-lg-8" style="height:1100px; overflow:auto; padding:10px; background-color:  #fffaf0;">
 			<!-- パネル部分 -->
 			<div id="myTabContent" class="tab-content mt-3"><!-- タイムライン部分 -->
 				<div id="home" class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
@@ -29,7 +30,7 @@
 								<strong><%= post.user.nickname %></strong>・<%= time_ago_in_words(post.created_at).upcase %>
 							</div>
 							<p class="media-heading"><%= post.body %></p>
-							<iframe width="95%" height="350" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							
 							<% if post.user == current_user %>
 							<div class="dropdown text-right">
 								<!-- 切替ボタンの設定 -->
@@ -45,6 +46,9 @@
 							</div>
 							<% end %>
 						</div>
+					</div>
+					<div class="">
+						<iframe class="post_youtube" width="90%" height="350" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 					<% end %>
 				</div>
@@ -76,16 +80,15 @@
 							<% end %>
 							<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
 							<p class="media-heading"><%= recruitment_post.body %></p>
-							<iframe width="95%" height="350" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							
 						</div>
 					</div>
+					<iframe class="post_youtube" width="90%" height="350" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<% end %>
 				</div>
 			</div>
 		</div>
-		<div class="col-3 offset-1">
-			<%= render 'users/profile', user: @user, is_room: @is_room, room_id: @room_id, room: @room, entry: @entry %>
-		</div>
+		
 	</div>
 </div>
 

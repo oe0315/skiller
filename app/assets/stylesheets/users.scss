@@ -2,3 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.post_youtube {
+  margin-left: 50px;
+}
+
+/* レスポンシブCSS
+-------------------------------------------------- */
+@media screen and (max-width:425px) {
+  .post_youtube {
+    width: 95% !important;
+    height: 200px !important;
+    margin-left: 10px;
+  }
+}
