@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+/* topページ
+-------------------------------------------------- */
 .jumbotron {
   background-image: image-url("skiller3.png");
   background-repeat:  no-repeat;
@@ -22,7 +25,6 @@
 
 .navbar-expand-lg{
   box-shadow: 2px 2px 4px gray;
-  margin-bottom: 30px;
 }
 
 .media-home{
@@ -46,21 +48,6 @@ body {
 }
 
 
-/* マーケティング・コンテンツ
--------------------------------------------------- */
-
-/* カルーセルの下の3列の中のテキストを整列 */
-.marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: 400;
-}
-.marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
-}
 
 
 /* フィーチャー
@@ -106,4 +93,14 @@ body {
   .footer_link {
     margin: 0 auto;
   }
+}
+
+/* aboutページ
+-------------------------------------------------- */
+
+.about_top {
+  background-image: image-url("Thumbnail2.png");
+  background-size: cover;
+  background-position: center 30%;
+  color: white;
 }
