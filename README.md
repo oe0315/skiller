@@ -1,4 +1,4 @@
-# **skiller**![skiller](https://sklr.info/assets/skiller3-662ad6699a348219fa33d24ddde0a66936e9ddde8413b423f6e04c078983d277.png)
+# **skiller**![skiller](https://sklr.info/assets/skiller3-662ad6699a348219fa33d24ddde0a66936e9ddde8413b423f6e04c078983d277.png =100x100)
 
 ## サイト概要
 クリエイティブ系のスキルを持っている方、勉強中の方同士で、同ジャンル、他ジャンル問わないスキルとスキルのマッチングサイトになります。
