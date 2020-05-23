@@ -52,7 +52,14 @@ class UsersController < ApplicationController
 
     def follower
         @user = User.find(params[:user_id])
-    end
+	end
+
+	def search
+		@users = User.search(params[:keyword])
+        respond_to do |format|
+          format.json { render 'index', json: @users }
+		end
+	end
 
 
 	private

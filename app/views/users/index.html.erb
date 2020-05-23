@@ -38,5 +38,29 @@
 			</div>
 		</div>
 	</div>
+	      <div class="">
+            <%= form_with url:search_users_path, method: :get, local: true do %>
+            <%= text_field_tag :search, params[:search], value:"", id: "form", class:"form-control mr-sm-2", placeholder:"スキルから見つける" %>
+            <% end %>
+			<div class="table table-hover table-responsive">
+			<table class="table text-nowrap">
+			<thead>
+					    <tr>
+					      <th></th>
+					      <th>ニックネーム</th>
+					      <th>スキル1</th>
+					      <th>スキル2</th>
+					      <th>自己紹介</th>
+					    </tr>
+					 </thead>
+					 <tbody>
+					   <tr id="result">
+					    
+					   </tr>
+					 </tbody>
+			</table>
+			</div>
+          </div>
 </div>
+
 <%= render 'layouts/user_footer' %>
