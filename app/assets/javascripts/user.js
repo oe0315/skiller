@@ -13,10 +13,16 @@ $(document).on('turbolinks:load', function(){
 
       .done(function(data){
         $('#result').find('tr').remove();
-        $(data).each(function(i, user){
-          $('#result').append('<tr>' + '<td>' + user.profile_image + '</td>' + '</tr>'
-              )
-        });
+            $(data).each(function(i, user){
+                $('#result').append(
+                    '<tr>' + '<td>' + '<img src ="' + user.profile_image.url + '"width=64 height=64 class="rounded-circle" onerror="this.onerror = null; this.src=' + "'/no-image-icon.jpg'" + '">' + '</td>'
+                    + '<td>' + user.nickname + '</td>'
+                    + '<td>' + user.skill + '</td>'
+                    + '<td>' + user.second_skill + '</td>'
+                    + '<td>' + user.introduction + '</td>'
+                    + '</tr>'
+                    )
+            });
       })
     });
   });

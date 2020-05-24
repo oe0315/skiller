@@ -2,46 +2,11 @@
 <div class="container mb-5 mt-5">
 	<div class="row">
 		<div class="col-12">
-			<h4>スキル検索</h4>
-			<!--posts一覧-->
-			<div class="table table-hover table-responsive">
-				<table class="table text-nowrap">
-					<thead>
-					    <tr>
-					      <th></th>
-					      <th>ニックネーム</th>
-					      <th>スキル1</th>
-					      <th>スキル2</th>
-					      <th>自己紹介</th>
-					    </tr>
-					 </thead>
-					 <% @users.reverse_each do |user| %>
-					<tbody>
-						<tr>
-							<th scope="row">
-								<%= link_to user_path(user) do %>
-								<% if user.profile_image? %>
-								<%= image_tag user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
-								<% else %>
-								<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
-								<% end %>
-								<% end %>
-							</th>
-							<td class="align-middle"><%= user.nickname %></td>
-							<td class="align-middle"><%= user.skill %></td>
-							<td class="align-middle"><%= user.second_skill %></td>
-							<td class="align-middle"><%= user.introduction %></td>
-						</tr>
-					</tbody>
-					<% end %>
-				</table>
-			</div>
-		</div>
-	</div>
-	      <div class="">
-            <%= form_with url:search_users_path, method: :get, local: true do %>
+		    <%= form_with url:search_users_path, method: :get, local: true do %>
             <%= text_field_tag :search, params[:search], value:"", id: "form", class:"form-control mr-sm-2", placeholder:"スキルから見つける" %>
             <% end %>
+			<h4>スキル検索</h4>
+			<!--posts一覧-->
 			<div class="table table-hover table-responsive">
 			<table class="table text-nowrap">
 			<thead>
@@ -53,14 +18,14 @@
 					      <th>自己紹介</th>
 					    </tr>
 					 </thead>
-					 <tbody>
-					   <tr id="result">
-					    
-					   </tr>
+					 <tbody id="result">
+					 <!--user.jsのuser一覧-->
 					 </tbody>
 			</table>
 			</div>
           </div>
+		</div>
+	</div>
 </div>
 
 <%= render 'layouts/user_footer' %>
