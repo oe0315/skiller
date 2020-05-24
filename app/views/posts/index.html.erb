@@ -3,19 +3,25 @@
   <h5>タイムライン</h5>
 	<div class="row">
 	    <div class="col-lg-4 mb-5">
-			<%= form_with url:posts_path, :method => 'get', local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"投稿から見つける" %>
-            <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-            <% end %>
+		　　<div class="row">
+		      <div class="col-9">
+				<%= form_with url:posts_path, :method => 'get', local: true do %>
+				<%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"投稿をさがす" %>
+			  </div>
+			  <div class="col-3">
+				<%= submit_tag '検索', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+			  </div>
+           	    <% end %>
+			</div>
 			<%= form_for(@post, remote: true) do |f| %>
 			<div class="field row pr-3 pl-3">
-				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"投稿", required: true  %>
+				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"本文", required: true  %>
 			</div>
 			<div class="field row pr-3 pl-3">
-				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTube_URL", required: true  %>
+				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTubeのURLを貼ってください", required: true  %>
 			</div>
 			<div class="actions row pr-3 pl-3">
-				<%= f.submit "投稿", class: "btn btn-primary btn-block", style: "margin-top: 30px;" %>
+				<%= f.submit "投稿", class: "btn btn-outline-primary btn-block", style: "margin-top: 30px;" %>
 			</div>
 			<% end %>
 		</div>

@@ -3,22 +3,28 @@
    <h5>募集一覧</h5>
 	<div class="row">
 		<div class="col-lg-4 mb-5">
-			<%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"募集から見つける" %>
-            <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-            <% end %>
+			<div class="row">
+					<div class="col-9">
+						<%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
+						<%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"募集をさがす" %>
+					</div>
+					<div class="col-3">
+						<%= submit_tag '検索', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
+					</div>
+					<% end %>
+			</div>
 			<%= form_for(@recruitment_post, remote: true) do |f| %>
 			<div class="field row pr-3 pl-3">
 				<%= f.text_field :title, class:"form-control", style: "margin-top: 30px;", placeholder:"タイトル", required: true %>
 			</div>
 			<div class="field row pr-3 pl-3">
-				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"投稿", required: true %>
+				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"本文", required: true %>
 			</div>
 			<div class="field row pr-3 pl-3">
-				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTube", required: true %>
+				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTubeのURLを貼ってください", required: true %>
 			</div>
 			<div class="actions row pr-3 pl-3">
-				<%= f.submit "投稿", class: "btn btn-primary", class: "btn btn-primary btn-block", style: "margin-top: 30px;" %>
+				<%= f.submit "投稿", class: "btn btn-primary", class: "btn btn-outline-primary btn-block", style: "margin-top: 30px;" %>
 			</div>
 			<% end %>
 		</div>
@@ -41,13 +47,11 @@
 				    </div>
 					<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
 					<p><%= recruitment_post.body %></p>
-					
 				</div>
 			</div>
 			<iframe class="post_youtube" width="90%" height="320" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<% end %>
 		</div>
-		
 	</div>
 </div>
 <%= render 'layouts/user_footer' %>

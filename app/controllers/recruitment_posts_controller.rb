@@ -1,6 +1,7 @@
 class RecruitmentPostsController < ApplicationController
 	before_action :authenticate_user!
 
+
 	def index
 		@recruitment_post = RecruitmentPost.new
 		@recruitment_posts = RecruitmentPost.search(params[:search]).page(params[:page]).per(10)
@@ -38,5 +39,6 @@ class RecruitmentPostsController < ApplicationController
 	private
     def recruitment_post_params
     	params.require(:recruitment_post).permit(:title, :body, :youtube_url)
-    end
+	end
+
 end
