@@ -21,32 +21,10 @@
         <%= fa_icon("bullhorn lg", text: "募集") %>
         <% end %>
       </li>
-      <li class="nav-item item dropdown" style="margin-left: 80px;">
-        <!-- 切替ボタンの設定 -->
-        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false"><%= fa_icon("search lg", text: "検索") %></a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <div class="dropdown-item form-inline my-2 my-lg-0">
-            <%= form_with url:users_path, method: :get, local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"スキルから見つける" %>
-            <%= submit_tag "Search", class:"btn btn-outline-info my-2 my-sm-0" %>
-            <% end %>
-          </div>
-          <div class="dropdown-item form-inline my-2 my-lg-0">
-            <%= form_with url:posts_path, :method => 'get', local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"投稿から見つける" %>
-            <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-            <% end %>
-          </div>
-          <div class="dropdown-item form-inline my-2 my-lg-0">
-            <%= form_with url:recruitment_posts_path, :method => 'get', local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"募集から見つける" %>
-            <%= submit_tag 'Search', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-            <% end %>
-          </div>
-          <div class="dropdown-item p-4 text-muted" style="max-width: 200px;">
-            それぞれの検索窓で検索してください。
-          </div>
-        </div>
+      <li class="nav-item item" style="margin-left: 80px;">
+        <%=link_to users_path, class:"nav-link" do %>
+        <%= fa_icon("search lg", text: "ユーザー検索") %></a>
+        <% end %>
       </li>
       <li class="nav-item item" style="margin-left: 80px;">
         <%=link_to notifications_path, class:"nav-link" do %>
@@ -57,7 +35,7 @@
           <%= fa_icon("bell lg", text: "通知") %>
           <% end %>
           <% end %>
-      </li>    　　 
+      </li>
       <li class="nav-item item" style="margin-left: 80px;">
         <%=link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
         <%= fa_icon("sign-out lg", text: "ログアウト") %>

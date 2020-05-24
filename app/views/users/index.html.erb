@@ -3,9 +3,8 @@
 	<div class="row">
 		<div class="col-12">
 		    <%= form_with url:search_users_path, method: :get, local: true do %>
-            <%= text_field_tag :search, params[:search], value:"", id: "form", class:"form-control mr-sm-2", placeholder:"スキルから見つける" %>
+            <%= text_field_tag :search, params[:search], value:"", id: "form", class:"form-control mr-sm-2", placeholder:"スキルやニックネームを入力してください" %>
             <% end %>
-			<h4>スキル検索</h4>
 			<!--posts一覧-->
 			<div class="table table-hover table-responsive">
 			<table class="table text-nowrap">
@@ -27,5 +26,3 @@
 		</div>
 	</div>
 </div>
-
-<%= render 'layouts/user_footer' %>
