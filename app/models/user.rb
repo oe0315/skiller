@@ -19,7 +19,7 @@ class User < ApplicationRecord
  validates :nickname,length: {maximum: 20, minimum: 2}
  validates :skill,length: {maximum: 20, minimum: 2}
  validates :second_skill,length: {maximum: 20}
- validates :introduction,length: {maximum: 200}
+ validates :introduction,length: {maximum: 100}
 
 
 

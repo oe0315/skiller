@@ -50,19 +50,6 @@ body {
 
 
 
-/* フィーチャー
-------------------------- */
-
-.featurette-divider {
-  margin: 5rem 0; /* ブートストラップの&lt;hr&gt;をもっと外に出す */
-}
-
-/* マーケティングの見出しを細めにする */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.05rem;
-}
 
 
 /* レスポンシブCSS
@@ -103,4 +90,15 @@ body {
   background-size: cover;
   background-position: center 30%;
   color: white;
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+}
+
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
 }
