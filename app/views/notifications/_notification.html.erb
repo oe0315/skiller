@@ -6,7 +6,7 @@
 		<% if visitor.profile_image? %>
 		<%= image_tag visitor.profile_image.url, :size => '40x40',class:"rounded-circle" %>
 		<% else %>
-		<%= image_tag "/assets/no-image-icon.jpg", :size => '40x40',class:"rounded-circle"%>
+		<%= image_tag "no-image-icon.jpg", :size => '40x40',class:"rounded-circle"%>
 		<% end %>
 		<% end %>
 		<%= visitor.nickname %><span>さんが</span>
