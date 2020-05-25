@@ -3,16 +3,16 @@
   <h5>タイムライン</h5>
 	<div class="row">
 	    <div class="col-lg-4 mb-5">
-		　　<div class="row">
-		      <div class="col-9">
-				<%= form_with url:posts_path, :method => 'get', local: true do %>
+			<%= form_with url:posts_path, :method => 'get', local: true do %>
+			<div class="row">
+		      	<div class="col-9">
 				<%= text_field_tag :search, params[:search], value:"", class:"form-control mr-sm-2", type:"search", placeholder:"投稿をさがす" %>
-			  </div>
-			  <div class="col-3">
+				</div>
+				<div class="col-3">
 				<%= submit_tag '検索', :name => nil, class:"btn btn-outline-info my-2 my-sm-0" %>
-			  </div>
-           	    <% end %>
+			  	</div>
 			</div>
+			  <% end %>
 			<%= form_for(@post, remote: true) do |f| %>
 			<div class="field row pr-3 pl-3">
 				<%= f.text_area :body, class:"form-control", style: "margin-top: 30px;", rows:"7px", placeholder:"本文", required: true  %>
