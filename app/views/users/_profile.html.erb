@@ -2,9 +2,9 @@
 <div class="card" style="width: 18rem;">
 	<div class="profile_image text-center" style="margin-top: 20px;">
 		<% if user.profile_image? %>
-		<%= image_tag user.profile_image.url, :size => '200x200',class:"rounded-circle" %>
+			<%= image_tag user.profile_image.url, :size => '200x200',class:"rounded-circle" %>
 		<% else %>
-		<%= image_tag "no-image-icon.jpg", :size => '200x200',class:"rounded-circle" %>
+			<%= image_tag "no-image-icon.jpg", :size => '200x200',class:"rounded-circle" %>
 		<% end %>
 	</div>
 	<div class="card-body">
@@ -16,43 +16,42 @@
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item"><strong>スキル</strong></li>
 		<li class="list-group-item"><span style="margin-left: 10px;">・<%= user.skill %></span></li>
-		<li class="list-group-item"><span style="margin-left: 10px;">・<%= user.second_skill %></sapn></li>
+		<li class="list-group-item"><span style="margin-left: 10px;">・<%= user.second_skill %></span></li>
 	</ul>
 	<div class="card-body">
 		<% if user == current_user %>
-		<%= link_to "編集", edit_user_path, class: "btn btn-outline-info role=button aria-pressed=true card-link btn-block rounded-pill"  %>
+			<%= link_to "編集", edit_user_path, class: "btn btn-outline-info role=button aria-pressed=true card-link btn-block rounded-pill"  %>
 		<% else %>
-		<% if current_user.following?(user) && current_user.follower?(user) %>
-		<%= link_to 'マッチングを外す', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-info role=button aria-pressed=true card-link btn-block rounded-pill" %>
-		<% elsif current_user.following?(user) %>
-		<%= link_to 'フォローを外す', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-danger role=button aria-pressed=true card-link btn-block rounded-pill" %>
-		<% else %>
-		<%= link_to 'フォローする', follow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-primary role=button aria-pressed=true card-link btn-block rounded-pill" %>
-		<% end %>
+			<% if current_user.following?(user) && current_user.follower?(user) %>
+				<%= link_to 'マッチングを外す', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-info role=button aria-pressed=true card-link btn-block rounded-pill" %>
+			<% elsif current_user.following?(user) %>
+				<%= link_to 'フォローを外す', unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-danger role=button aria-pressed=true card-link btn-block rounded-pill" %>
+			<% else %>
+				<%= link_to 'フォローする', follow_path(user.id), method: :POST, remote: true, class: "btn btn-outline-primary role=button aria-pressed=true card-link btn-block rounded-pill" %>
+			<% end %>
 		<% end %>
 	</div>
 	<div class="card-body">
 		<% if user == current_user %>
-		<%= link_to "DM一覧", rooms_path, class: "btn btn-outline-success role=button aria-pressed=true card-link btn-block rounded-pill"  %>
+			<%= link_to "DM一覧", rooms_path, class: "btn btn-outline-success role=button aria-pressed=true card-link btn-block rounded-pill"  %>
 		<% else %>
-		<!--チャット-->
-		<% if user.id == current_user.id %>
-		<% else %>
-		<% if current_user.following?(user) && current_user.follower?(user) %>
-		<% if is_room == true %>
-		<%= link_to "DMを送る", room_path(room_id), class: "btn btn-outline-success role=button aria-pressed=true card-link btn-block rounded-pill"  %>
-		<% else %>
-		<%= form_for room do |f| %>
-		<%= fields_for entry do |e| %>
-		<%= e.hidden_field :user_id, :value=> user.id %>
-		<% end %>
-		<%= f.submit "DMを始める", class: "btn btn-outline-success role=button aria-pressed=true card-link btn-block rounded-pill" %>
-		<% end %>
-		<% end %><!--@is_room == true-->
-		<% end %>
-		<% end %>
-		<!--チャット-->
-		<% end %>
+			<!--チャット-->
+			<% if user.id == current_user.id %>
+			<% else %>
+				<% if current_user.following?(user) && current_user.follower?(user) %>
+					<% if is_room == true %>
+						<%= link_to "DMを送る", room_path(room_id), class: "btn btn-outline-success role=button aria-pressed=true card-link btn-block rounded-pill"  %>
+					<% else %>
+						<%= form_for room do |f| %>
+							<%= fields_for entry do |e| %>
+								<%= e.hidden_field :user_id, :value => user.id %>
+							<% end %>
+							<%= f.submit "DMを始める", class: "btn btn-outline-success role=button aria-pressed=true card-link btn-block rounded-pill" %>
+						<% end %>
+					<% end %><!--@is_room == true-->
+				<% end %>
+			<% end %><!--if user.id == current_user.id-->
+		<% end %><!--if user == current_user-->
 	</div>
 	<div class="card-body">
 		<%= link_to "レビュー", user_reviews_path(user.id), class: "btn btn-outline-warning role=button aria-pressed=true card-link btn-block rounded-pill"  %>
