@@ -1,21 +1,26 @@
 <%= render 'layouts/user_header' %>
 <div class="container mb-5 mt-5">
 	<div class="row">
-		<div class="col-lg-8 offset-lg-2 dm_list">
+		<div class="col-lg-6 offset-lg-3 dm_list">
 			<h4>DM一覧</h4>
 			<% @rooms.each do |room| %>
-			<div class="dm_list__content border">
-				<%= link_to room_path(room), class: "dm_list__content__link" do %>
-				<div class="dm_list__content__link__box">
-					<div class="dm_list__content__link__box__name">
-						<%= opponent_user(room) %>
+				<div class="row border">
+					<div class="col-8">
+						<div class="dm_list__content">
+							<div class="dm_list__content__link__box">
+								<div class="dm_list__content__link__box__name pt-3">
+									<strong><%= opponent_user(room) %></strong>
+								</div>
+								<div class="dm_list__content__link__box__message">
+									<%= most_new_message_preview(room) %>
+								</div>
+							</div>
+						</div>
 					</div>
-					<% end %>
-					<div class="dm_list__content__link__box__message">
-						<%= most_new_message_preview(room) %>
+					<div class="col-4 pt-4">
+					<%= link_to "メッセージを送る", room_path(room), class: "dm_list__content__link btn btn-outline-info rounded-pill" %>
 					</div>
 				</div>
-			</div>
 			<% end %>
 		</div>
 	</div>

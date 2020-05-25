@@ -64,6 +64,8 @@
 							<% end %>
 						</div>
 						<div class="media-body" style="margin-left: 20px;">
+							<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
+							<p class="media-heading"><%= recruitment_post.body %></p>
 							<% if recruitment_post.user == current_user %>
 							<div class="dropdown text-right">
 								<!-- 切替ボタンの設定 -->
@@ -78,8 +80,6 @@
 								</div>
 							</div>
 							<% end %>
-							<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
-							<p class="media-heading"><%= recruitment_post.body %></p>
 						</div>
 					</div>
 					<iframe class="post_youtube" width="90%" height="350" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
