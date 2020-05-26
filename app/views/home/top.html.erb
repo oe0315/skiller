@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="container marketing" style=" background-color: white;">
+  <div class="container marketing" style=" background-color: #fffaf0;">
     <!-- 新着の募集6件 -->
     <div class="row" >
       <div class="col-12 text-center" style="height: 100px;" >
@@ -18,7 +18,7 @@
       <div class="col-12">
         <div class="row">
           <% @recruitment_posts.last(6).reverse_each do |recruitment_post| %>
-          <div class="media media-home col-lg-6 col-xs-12">
+          <div class="media media-home col-lg-6 col-xs-12 time_line border mb-3 p-3" style=" background-color: white;">
             <div class="media-left media-top">
               <%= link_to user_path(recruitment_post.user) do %>
               <% if recruitment_post.user.profile_image? %>
@@ -44,7 +44,7 @@
       </div>
     </div><!-- /.row -->
   </div><!-- /.container -->
-  <div class="container-fluid" style="height: 80px; background-color: white;"><!-- 余白 -->
+  <div class="container-fluid" style="height: 80px; background-color: #fffaf0;"><!-- 余白 -->
   </div>
   <div class="footer_image">
     <div class="container-fluid">

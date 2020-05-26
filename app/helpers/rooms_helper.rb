@@ -1,5 +1,5 @@
 module RoomsHelper
-	# 最新メッセージのデータを取得して表示するメソッド
+  # 最新メッセージのデータを取得して表示するメソッド
   def most_new_message_preview(room)
     message = room.direct_messages.order(updated_at: :desc).limit(1)
     message = message[0]
@@ -17,5 +17,4 @@ module RoomsHelper
     nickname = entry[0].user.nickname
     tag.p "#{nickname}", class: "dm_list__content__link__box__nicknamename"
   end
-
 end

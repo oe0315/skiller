@@ -15,7 +15,7 @@
 				</li>
 			</ul>
 			<!-- タイムライン部分 -->
-			<div id="myTabContent" class="tab-content" style="height:800px; overflow:auto; background-color:  #fffaf0;">
+			<div id="myTabContent" class="tab-content" style="height:800px; overflow:auto; background-color:  white;">
 				<div id="home" class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
 					<% @posts.reverse_each do |post| %>
 					<div class="media" style="margin-top: 20px;">
@@ -55,34 +55,34 @@
 				<!-- 募集部分 -->
 				<div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
 					　<% @recruitment_posts.reverse_each do |recruitment_post| %>
-					<div class="media">
-						<div class="media-left media-top">
-							<% if recruitment_post.user.profile_image? %>
-							<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
-							<% else %>
-							<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
-							<% end %>
-						</div>
-						<div class="media-body" style="margin-left: 20px;">
-							<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
-							<p class="media-heading"><%= recruitment_post.body %></p>
-							<% if recruitment_post.user == current_user %>
-							<div class="dropdown text-right">
-								<!-- 切替ボタンの設定 -->
-								<button type="button" class="btn btn-white btn-sm dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<div class="dropdown-item">
-										<%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-block role=button aria-pressed=true" %>
+							<div class="media">
+								<div class="media-left media-top">
+									<% if recruitment_post.user.profile_image? %>
+									<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
+									<% else %>
+									<%= image_tag "no-image-icon.jpg", :size => '64x64',class:"rounded-circle" %>
+									<% end %>
+								</div>
+								<div class="media-body" style="margin-left: 20px;">
+									<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
+									<p class="media-heading"><%= recruitment_post.body %></p>
+									<% if recruitment_post.user == current_user %>
+									<div class="dropdown text-right">
+										<!-- 切替ボタンの設定 -->
+										<button type="button" class="btn btn-white btn-sm dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<div class="dropdown-item">
+												<%= link_to "編集", edit_recruitment_post_path(recruitment_post), class: "btn btn-outline-info btn-block role=button aria-pressed=true" %>
+											</div>
+											<div class="dropdown-item">
+												<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-block role=button aria-pressed=true" %>
+											</div>
+										</div>
 									</div>
-									<div class="dropdown-item">
-										<%= link_to "削除", recruitment_post_path(recruitment_post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger btn-block role=button aria-pressed=true" %>
-									</div>
+									<% end %>
 								</div>
 							</div>
-							<% end %>
-						</div>
-					</div>
-					<iframe class="post_youtube" width="90%" height="350" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe class="post_youtube" width="90%" height="350" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<% end %>
 				</div>
 			</div>

@@ -8,7 +8,7 @@
 				<%= fa_icon("trash lg", text: "全て削除") %>
 				<% end %>
 			</div>
-			<div class="rounded" style="background-color: #ffffe0;">
+			<div class="rounded" style="background-color: white;">
 				<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 				<% if notifications.exists? %>
 				<%= render notifications %>

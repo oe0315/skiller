@@ -1,7 +1,7 @@
 <%= render 'layouts/user_header' %>
 <div class="container mb-5 mt-5">
 	<div class="row">
-		<div class="col-lg-7 pb-5">
+		<div class="offset-lg-2 col-lg-8 pb-5">
 		    <%= form_with url:search_users_path, method: :get, local: true do %>
             <%= text_field_tag :search, params[:search], value:"", id: "form", class:"form-control mr-sm-2", placeholder:"スキルやニックネームを入力してください" %>
             <% end %>

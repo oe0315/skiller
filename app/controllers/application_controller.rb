@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-	before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-	def after_sign_in_path_for(resource)
-        flash[:notice] = "ログインに成功しました"
-        user_url(@user.id)
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインに成功しました"
+    user_url(@user.id)
     end
 
   protected
