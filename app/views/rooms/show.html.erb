@@ -37,16 +37,16 @@
     </div>
   </div>
 
+　　<%= form_for @direct_message do |f| %>
     <div class="row">
       <div class="col-lg-4 offset-lg-4">
-        <%= form_for @direct_message do |f| %>
         <%= f.text_field :message, :placeholder => "メッセージを入力して下さい", class:"form-control rounded-pill p-2", style: "margin-top:50px;", rows:"7px", required: true %>
         <%= f.hidden_field :room_id, :value => @room.id %>
       </div>
       <div class="col-lg-1 mb-5 text-right">
         <%= f.submit "送信", class: "btn btn-outline-warning role=button active aria-pressed=true card-link rounded-pill", style: "margin-top:50px;" %>
-        <% end %>
       </div>
     </div>
+    <% end %>
 
 </div>
