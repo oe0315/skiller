@@ -16,6 +16,10 @@
 				<%= f.text_field :youtube_url, autocomplete: "YouTube", class:"form-control", placeholder:"YouTube_URL", required: true %>
 			</div>
 			<div class="form-group row">
+				<%= f.label :タグ　%>
+				<%= f.text_field :tag_list, value: @recruitment_post.tag_list.join(','), class:"form-control", placeholder:"タグ ex)音楽,ダンス,KPOP", required: true %>
+			</div>
+			<div class="form-group row">
 			<%= f.submit "変更", class:"btn btn-info btn-block" %>
 		    </div>
 			<% end %>

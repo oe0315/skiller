@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def top
-    @recruitment_posts = RecruitmentPost.limit(6)
+    @recruitment_posts = RecruitmentPost.all
   end
 
   def about

@@ -7,15 +7,15 @@
 		<!-- タブ部分 -->
 		<div class="col-lg-8 offset-lg-1">
 			<ul id="myTab" class="nav nav-tabs" role="tablist">
-				<li class="nav-item" role="presentation">
+				<li class="nav-item time_line" role="presentation">
 					<a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">タイムライン</a>
 				</li>
-				<li class="nav-item" role="presentation">
+				<li class="nav-item time_line" role="presentation">
 					<a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">募集</a>
 				</li>
 			</ul>
 			<!-- タイムライン部分 -->
-			<div id="myTabContent" class="tab-content" style="height:800px; overflow:auto; background-color:  white;">
+			<div id="myTabContent" class="tab-content border time_line" style="height:800px; overflow:auto; background-color:  white;">
 				<div id="home" class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
 					<% @posts.reverse_each do |post| %>
 					<div class="media" style="margin-top: 20px;">
@@ -55,7 +55,7 @@
 				<!-- 募集部分 -->
 				<div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
 					　<% @recruitment_posts.reverse_each do |recruitment_post| %>
-							<div class="media">
+							<div class="media mt-3">
 								<div class="media-left media-top">
 									<% if recruitment_post.user.profile_image? %>
 									<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
@@ -64,8 +64,11 @@
 									<% end %>
 								</div>
 								<div class="media-body" style="margin-left: 20px;">
-									<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
-									<p class="media-heading"><%= recruitment_post.body %></p>
+									<div class="media-heading">
+										<strong><%= recruitment_post.title %></strong>
+										<%= render 'recruitment_posts/tag_list', tag_list: recruitment_post.tag_list %>
+									</div>
+									<p class="media-heading mt-3"><%= recruitment_post.body %></p>
 									<% if recruitment_post.user == current_user %>
 									<div class="dropdown text-right">
 										<!-- 切替ボタンの設定 -->

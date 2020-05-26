@@ -3,7 +3,11 @@ class RecruitmentPostsController < ApplicationController
 
   def index
     @recruitment_post = RecruitmentPost.new
-    @recruitment_posts = RecruitmentPost.search(params[:search]).page(params[:page]).per(10)
+    if params[:tag_name]
+      @recruitment_posts = RecruitmentPost.tagged_with("#{params[:tag_name]}")
+    else
+      @recruitment_posts = RecruitmentPost.search(params[:search])
+    end
   end
 
   def create
@@ -38,6 +42,6 @@ class RecruitmentPostsController < ApplicationController
   private
 
   def recruitment_post_params
-    params.require(:recruitment_post).permit(:title, :body, :youtube_url)
-   end
+    params.require(:recruitment_post).permit(:title, :body, :youtube_url, :tag_list)
+  end
 end

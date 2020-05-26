@@ -23,6 +23,9 @@
 			<div class="field row pr-3 pl-3">
 				<%= f.text_field :youtube_url, class:"form-control", style: "margin-top: 30px;", placeholder:"YouTubeのURLを貼ってください", required: true %>
 			</div>
+			<div class="field row pr-3 pl-3">
+				<%= f.text_field :tag_list, value: @recruitment_post.tag_list.join(','), class:"form-control", style: "margin-top: 30px;", placeholder:"タグ ex)音楽,ダンス,KPOP", required: true %>
+			</div>
 			<div class="actions row pr-3 pl-3">
 				<%= f.submit "投稿", class: "btn btn-primary", class: "btn btn-outline-primary btn-block", style: "margin-top: 30px;" %>
 			</div>
@@ -44,7 +47,7 @@
 						</div>
 						<div class="media-body" style="margin-left: 20px;">
 							<div class="nickname" style="margin-bottom: 5px;">
-							<strong><%= recruitment_post.user.nickname %></strong>・<%= time_ago_in_words(recruitment_post.created_at).upcase %>
+							<strong><%= recruitment_post.user.nickname %></strong>・<%= time_ago_in_words(recruitment_post.created_at).upcase %><%= render 'recruitment_posts/tag_list', tag_list: recruitment_post.tag_list %>
 							</div>
 							<h5 class="media-heading"><strong><%= recruitment_post.title %></strong></h5>
 							<p><%= recruitment_post.body %></p>
@@ -53,7 +56,6 @@
 				<iframe class="post_youtube" width="90%" height="320" src="https://www.youtube.com/embed/<%= recruitment_post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<% end %>
-			
 		</div>
 	</div>
 </div>
