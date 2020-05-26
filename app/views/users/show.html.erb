@@ -55,7 +55,7 @@
 				<!-- 募集部分 -->
 				<div id="profile" class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab">
 					　<% @recruitment_posts.reverse_each do |recruitment_post| %>
-							<div class="media mt-3">
+							<div class="media mt-3 ml-3">
 								<div class="media-left media-top">
 									<% if recruitment_post.user.profile_image? %>
 									<%= image_tag recruitment_post.user.profile_image.url, :size => '64x64',class:"rounded-circle" %>
