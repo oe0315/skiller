@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'skilleroe'
-    config.asset_host = 'https://skilleroe.s3-ap-northeast-1.amazonaws.com/'
+    config.asset_host = 'https://skilleroe.s3-ap-northeast-1.amazonaws.com'
     config.fog_public = false
     config.fog_credentials = {
       provider: 'AWS',
