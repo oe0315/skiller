@@ -54,10 +54,6 @@ YouTubeでの投稿が必須で、日頃からスキルの発信ができます�
 あいまい検索が可能なので、自分の欲しい人が検索できます。
 
 
-## 設計書
-[wire_flame](https://drive.google.com/file/d/15gh7PXpPc-O32WLt6wRdboGPrTbOl2c3/view?usp=sharing)  
-[ER図](https://drive.google.com/file/d/1xdTNnrtIyyKH4CR4qj_NhWlwYNY7c8lb/view?usp=sharing)  
-[テーブル定義書](https://drive.google.com/file/d/1hORaXQLOw55wVUw0M8RiO6yRQL7SzY1P/view?usp=sharing)  
-[詳細設計](https://drive.google.com/file/d/1OS36pPN58HP5PcepaKIOKfYqGmUBQeDs/view?usp=sharing)  
+## 機能一覧
 [機能一覧](https://docs.google.com/spreadsheets/d/1LyKYSdzT2so0t86SNF6qyLH6fQfm9pbjeYBsFBzdYJE/edit?usp=sharing)
 
