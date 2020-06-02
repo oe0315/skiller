@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @review = Review.new
     @reviews = Review.all
-    @sum = 0
   end
 
   def create

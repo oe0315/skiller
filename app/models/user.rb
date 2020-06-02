@@ -57,4 +57,20 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def is_good?
+    if total_score == nil #nilの場合エラーが出てしまうので記入
+      false
+    elsif total_score > 5
+      true
+    else
+      false
+    end
+  end
+
+  def total_score
+    # Reviewのscoreをuser_id単位に合計して,その中からuser_idが対象ユーザーのidであるものだけを取得する
+    self.reviews.group(:user_id).sum(:score).values.first
+  end
+
 end
