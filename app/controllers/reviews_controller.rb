@@ -5,12 +5,14 @@ class ReviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @review = Review.new
     @reviews = Review.all
+    @sum = 0
   end
 
   def create
     @review = Review.new(review_params)
     @review.reviewing_user_id = current_user.id
-    @review.save!
+    @review.score = Language.get_data(review_params[:comment])
+    @review.save
     redirect_to user_reviews_path
   end
 

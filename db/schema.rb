@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_163506) do
+ActiveRecord::Schema.define(version: 2020_06_02_090139) do
 
   create_table "direct_messages", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_163506) do
     t.datetime "updated_at", null: false
     t.float "rate", default: 0.0, null: false
     t.integer "reviewing_user_id"
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "rooms", force: :cascade do |t|
